@@ -13,7 +13,7 @@
 *声明*:
 >本模组部分使用了开源游戏***OepnHV***的素材以及音乐
 
->[仓库指路](https://github.com/OpenHV/OpenHV)
+>==>[仓库指路](https://github.com/OpenHV/OpenHV)<==
 
 >主创是群星之争痴子，见到任何类似的单位都是正常的🔯
 
