@@ -1,0 +1,32 @@
+name: Extract and Cleanup ZIP Files
+
+on:
+  workflow_dispatch:  # 仅手动触发
+
+jobs:
+  extract-zip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find and extract ZIP files
+        run: |
+          # 安装必要的工具
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          
+          # 查找根目录下的所有ZIP文件
+          for zipfile in *.zip; do
+            if [ -f "$zipfile" ]; then
+              echo "Extracting $zipfile..."
+              unzip -o "$zipfile"  # -o 选项表示覆盖已存在的文件
+              echo "Removing $zipfile..."
+              rm "$zipfile"
+            fi
+          done
+          
+          # 如果没有找到ZIP文件
+          if [ ! -f *.zip ]; then
+            echo "No ZIP files found in the root directory."
+          fi
