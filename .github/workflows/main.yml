@@ -10,14 +10,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 获取完整 Git 历史（避免提交问题）
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}  # 赋予写入权限
 
       - name: Find and extract ZIP files
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip
           
-          # 查找并解压 ZIP 文件
           for zipfile in *.zip; do
             if [ -f "$zipfile" ]; then
               echo "Extracting $zipfile..."
@@ -32,17 +32,14 @@ jobs:
           fi
 
       - name: Commit changes (if any)
-        id: commit
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          
           git add .
-          
           if git diff --quiet --exit-code; then
             echo "No changes to commit."
           else
             git commit -m "Auto-commit: Extracted ZIP files and removed originals"
-            git push
+            git push origin HEAD:${GITHUB_REF#refs/heads/}
             echo "Changes committed and pushed."
           fi
