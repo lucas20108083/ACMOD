@@ -67,4 +67,5 @@
 
 
 ***根据OpenHV的GPLv3开源协议要求***
-[**本仓库已提供GPLv3开源协议文件**](https://github.com/lucas20108083/ACMOD/OpenHV_GPLv3)
+
+[**本仓库已提供GPLv3开源协议文件**](https://github.com/lucas20108083/ACMOD/blob/main/OpenHV_GPLv3)
