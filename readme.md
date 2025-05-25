@@ -62,3 +62,9 @@
 ```
 
 ~~我要玩逆转裁判😭😭~~
+
+
+
+
+***根据OpenHV的GPLv3开源协议要求***
+[**本仓库已提供GPLv3开源协议文件**](https://github.com/lucas20108083/ACMOD/OpenHV_GPLv3)
