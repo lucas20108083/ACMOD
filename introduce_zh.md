@@ -80,7 +80,7 @@
 
 ### 重要链接
 - [OpenHV 原始仓库](https://github.com/OpenHV/OpenHV)
-- [本模组 GPLv3 协议文件](https://github.com/lucas20108083/ACMOD/blob/main/OpenHV_GPLv3)
+- [本模组 GPLv3 协议文件](https://github.com/lucas20108083/ACMOD/blob/main/LICENSE)
 
 ### 补充说明
 模组中非来自 OpenHV 的原创内容，其版权归各自创作者所有。使用本模组即表示您已阅读并同意遵守 GPLv3 协议全部条款。
