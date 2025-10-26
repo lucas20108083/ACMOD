@@ -66,6 +66,21 @@
 
 
 
-***根据OpenHV的GPLv3开源协议要求***
+## 版权声明
 
-[**本仓库已提供GPLv3开源协议文件**](https://github.com/lucas20108083/ACMOD/blob/main/OpenHV_GPLv3)
+### 开源素材使用说明
+本模组部分资源基于开源项目 **OpenHV** 构建，遵循 **GNU General Public License v3.0** 协议。所有使用的开源素材均保留原始协议要求。
+
+### 协议遵守说明
+根据 GPLv3 协议要求：
+- 本模组源码已开源
+- 用户可自由使用、修改及分发代码
+- 任何基于本模组的衍生作品必须采用相同协议开源
+- 需保留原始版权声明与协议文档
+
+### 重要链接
+- [OpenHV 原始仓库](https://github.com/OpenHV/OpenHV)
+- [本模组 GPLv3 协议文件](https://github.com/lucas20108083/ACMOD/blob/main/OpenHV_GPLv3)
+
+### 补充说明
+模组中非来自 OpenHV 的原创内容，其版权归各自创作者所有。使用本模组即表示您已阅读并同意遵守 GPLv3 协议全部条款。
