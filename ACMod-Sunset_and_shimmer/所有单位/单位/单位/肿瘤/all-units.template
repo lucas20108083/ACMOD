@@ -146,7 +146,7 @@ delayedStartTimer:20
 delayedStartTimerRandom:20
 showInFog:true
 physics:true
-dirSpeed:0.72
+dirSpeed:2
 physicsGravity:-0.4
 [resource_spore]
 hidden:true
