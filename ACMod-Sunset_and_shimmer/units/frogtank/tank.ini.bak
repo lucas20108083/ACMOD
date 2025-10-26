@@ -1,0 +1,112 @@
+[core]
+name: frogtank
+class: CustomUnitMetadata
+price: 1145
+displayDescription:曾经制霸Rcn的一个机器人\n对整个铁锈圈有着一丁点没有的影响
+maxHp: 11111
+mass: 3000
+techLevel: 2
+buildSpeed: 105s
+radius: 11
+displayRadius: 11
+isBio: false
+softCollisionOnAll: 0
+[graphics]
+total_frames: 3
+image:        tank.png
+image_wreak:  tank_dead.png
+image_turret: frogtank.png
+imageScale:1
+turretImageScale:0.25
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+animation_moving_start: 0
+animation_moving_end: 2
+animation_moving_speed: 1
+dustEffect: true
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: true
+turretSize: 20
+turretTurnSpeed: 499999
+maxAttackRange: 1145
+shootDelay: 1
+[turret_1]
+#
+x: 0
+y: 0
+
+projectile: 1
+
+turnSpeedAcceleration: 99999
+
+shoot_sound:tank_firing
+shoot_sound_vol:0.3
+shoot_flame:small
+shoot_light:#FFEECCCC
+
+canShoot: true
+
+
+recoilOffset: 3
+
+
+[projectile_1]
+areaDamage: 2500000
+areaRadius:2500
+life: 6000000
+speed: 50000
+
+frame: 1
+
+drawSize: 1
+
+
+[movement]
+movementType: over_cliff_water
+moveSpeed: 33
+moveAccelerationSpeed: 0.13
+moveDecelerationSpeed: 0.22
+maxTurnSpeed: 33
+turnAcceleration: 33
+joinsGroupFormations:false
+moveSlidingMode :false
+moveIgnoringBody:false
+
+
+
+[effect_好似]
+priority:high
+life: 50
+scaleFrom: 0.5
+scaleTo: 55
+image:frogtank.png
+
+[effect_x]
+priority:high
+life: 120
+scaleFrom: 0.1
+scaleTo: 999
+image:frogtank.png
+
+[effect_龙]
+priority:high
+life: 50
+scaleFrom: 0.5
+scaleTo: 55
+image:ddd.webp
+[hiddenAction_狗叫]
+autoTriggerOnEvent:created
+showMessageToAllPlayers:⭕⭕⭕警告⭕⭕⭕?青蛙坦克来保护本房?此房出现以下问题?1.房主过度煞笔?中国人傻哔?你玩你妈游戏?我操你码?我操你码我操你码我操你码我操你码我操你码我操你码
+[hiddenAction_狗叫2]
+autoTrigger:true
+showMessageToAllPlayers:⭕⭕⭕警告⭕⭕⭕?青蛙坦克来保护本房?此房出现以下问题?1.房主过度煞笔?中国人傻哔?你玩你妈游戏?我操你码?我操你码我操你码我操你码我操你码我操你码我操你码
+[hiddenAction_狗叫32]
+autoTrigger:true
+showMessageToAllPlayers:我操你码
+[hiddenAction_好似]
+autoTriggerOnEvent:destroyed
+spawnEffects:好似,x,龙

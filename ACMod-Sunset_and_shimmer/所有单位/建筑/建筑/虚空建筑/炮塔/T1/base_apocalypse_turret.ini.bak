@@ -1,0 +1,89 @@
+#左上右下
+#byMxher
+[core]
+name:天启虚空塔T1
+displayText:天启T1塔
+displayDescription:-这活着的建筑似乎长出了嘴\n-发射酸液水弹攻击陆上敌人
+mass:9000
+maxHp:800
+radius:50
+class: CustomUnitMetadata
+techLevel:1
+maxShield:500
+buildSpeed:15s
+isBio:false
+buildingToFootprintOffsetX:40
+buildingToFootprintOffsetY:40
+price:800,VE:1000
+constructionFootprint:0,0,3,3
+footprint:0,0,3,3
+isBuilding:true
+[graphics]
+#teamColorsOnTurret:true
+#teamColoringMode:hueShift
+imageScale:0.75
+image:base.png
+turretImageScale:1.75
+image_turret:apocalypse.png
+[attack]
+canAttack:true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+maxAttackRange: 195
+shootDelay: 0.65s
+[turret_1]
+x: 0
+y: 2.1
+projectile: 1
+turnSpeedAcceleration: 1.0
+shoot_sound:firing3
+shoot_sound_vol:0.2
+shoot_flame:none
+shoot_light:#0000FF
+recoilOffset: -3
+[projectile_1]
+directDamage: 75
+life: 330
+mutatorX_ifUnitWithoutTags:无视zxx
+mutatorX_addResourcesDirectHit:zxx:0.05
+speed: 7.5
+trailEffect:traileffect
+trailEffectRate:2
+color:#ffffff
+image:水球子弹.png
+drawSize:1
+[movement]
+movementType:none
+[action_升级天启T2]
+text:-生长- [天启T2塔]
+description:升级持续腐蚀造成的伤害和持续时间\n提高生命值
+displayType:infoOnly
+buildSpeed:21.7s
+price:1000,VE:2000
+convertTo:天启虚空塔T2
+ai_isHighPriority:true
+[action_升级棱镜结晶]
+text:-生长- [棱镜结晶]
+description:-发射棱镜攻击敌人\n-极其有效的攻击
+displayType:infoOnly
+buildSpeed:30.8s
+price:2500,VE:2500
+convertTo:棱镜结晶虚空塔
+ai_isHighPriority:true
+
+[effect_traileffect]
+image: ROOT:blood.png
+life: 50
+fadeOut: true
+attachedToUnit: false
+color: #0000ff
+scaleFrom: 0.25
+scaleTo: 0.25
+alpha: 0.75
+drawUnderUnits:true
+liveAfterAttachedDies: true
+hSpeed:-0.3
+dirOffsetRandom:180
+yOffsetAbsoluteRandom:-0.15
+atmospheric: true

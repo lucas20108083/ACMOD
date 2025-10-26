@@ -1,0 +1,96 @@
+#左上右下
+#byMxher
+[core]
+name:棱镜结晶虚空塔
+displayText:棱镜结晶塔
+displayDescription:-祂变异了...\n-无法发射光线\n-可以发射强悍的棱镜碎片攻击
+mass:9000
+maxHp:2000
+radius:50
+class: CustomUnitMetadata
+techLevel:2
+maxShield:900
+energyMax:20
+energyRegen:0.05
+buildSpeed:30s
+isBio:false
+buildingToFootprintOffsetX:40
+buildingToFootprintOffsetY:40
+price:4500,VE:4100
+#2500,2500
+constructionFootprint:0,0,3,3
+footprint:0,0,3,3
+isBuilding:true
+[graphics]
+#teamColorsOnTurret:true
+#teamColoringMode:hueShift
+imageScale:0.75
+image:base.png
+turretImageScale:1.75
+image_turret:棱镜结晶.png
+[attack]
+canAttack:true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+maxAttackRange: 300
+shootDelay: 15
+[movement]
+movementType:none
+[turret_1]
+x: 0
+size:12
+y: 6
+shoot_sound:firing3
+shoot_sound_vol:0.15
+shoot_flame:el
+shoot_light:#FFEECCCC
+recoilOffset: -0.5
+recoilOutTime: 6
+laserDefenceEnergyUse: 1
+recoilReturnTime: 12
+[projectile_1]
+directDamage: 75
+life: 360
+speed: 7
+trailEffect:traileffect
+trailEffectRate:0.75
+areaDamage: 85
+areaRadius: 60
+image:结晶子弹.png
+[effect_el]
+priority:veryhigh
+total_frames:14
+life: 200
+attachedToUnit: false
+color: #0000FF
+scaleFrom:0.6
+scaleTo:0.8
+alpha: 0.75
+drawUnderUnits:false
+animateFrameSpeed:0.2
+animateFrameEnd:13
+animateFrameStart:0
+image:ROOT:fire.png
+
+
+
+[effect_traileffect]
+fadeOut: true
+attachedToUnit: false
+color: #1221ff
+scaleFrom: 0.15
+scaleTo: 0.35
+alpha: 0.65
+drawUnderUnits:true
+liveAfterAttachedDies: true
+hSpeed:-0.2
+dirOffsetRandom:60
+yOffsetAbsoluteRandom:-0.12
+atmospheric: true
+total_frames:13
+life: 200
+animateFrameSpeed:0.2
+animateFrameEnd:12
+animateFrameStart:0
+image:ROOT:fire2.png

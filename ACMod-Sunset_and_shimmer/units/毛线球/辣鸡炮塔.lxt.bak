@@ -1,0 +1,45 @@
+[turret_mainBody]
+x: 0
+y: 0
+idleDir:0
+barrelX: 12
+barrelY: 10
+turnSpeed: 2.9
+turnSpeedAcceleration: 0.3
+recoilOffset: -1
+recoilOutTime: 2
+recoilReturnTime: 14
+projectile: 1
+delay:10
+shoot_sound:plasma_fire
+shoot_sound_vol:0
+shoot_flame:CUSTOM:lightSlowFade
+canShoot: true
+warmup:7
+chargeEffectImage: SHARED:lighting_charge.png
+[turret_mainBody2]
+x: 0
+y: 0
+delay:10
+chargeEffectImage: SHARED:lighting_charge.png
+idleDir:0
+barrelX: -12
+barrelY: 10
+turnSpeed: 2.9
+turnSpeedAcceleration: 0.3
+recoilOffset: -1
+recoilOutTime: 2
+recoilReturnTime: 14
+projectile: 1
+shoot_sound:plasma_fire
+shoot_sound_vol:0
+shoot_flame:none
+canShoot: true
+warmup:14
+[projectile_1]
+directDamage: 0
+life: 2147483647
+frame: 11
+deflectionPower:-1
+drawSize: 0
+speed: 8

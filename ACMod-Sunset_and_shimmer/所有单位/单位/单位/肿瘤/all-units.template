@@ -1,0 +1,265 @@
+#单位移动音效太逆天了，等我弄好音效再改
+[effect_s1]
+image: ROOT:特效贴图/虫族血雾.png
+life: 20
+fadeOut: true
+attachedToUnit: true
+fadeInTime: 1.3
+priority:high
+scaleFrom: 0.1
+color: #70002F
+scaleTo: 0.6
+alpha: 0.62
+drawUnderUnits: true
+ySpeedRelative: 3
+#drawType:displacement
+[decal_选中]
+layer:shadow
+image:ROOT:特效贴图/肿瘤选中.png
+imageScale:${core.radius}*0.0651
+onlyWhenSelectedByAnyPlayer:true
+teamColors:true
+alwayStartDirAtZero:true
+alpha:0.25
+[effect_s2]
+image: ROOT:特效贴图/虫族血雾.png
+life: 75
+fadeOut: true
+attachedToUnit: true
+color: #FF3333
+fadeInTime: 4
+scaleFrom: 0.3
+scaleTo: 1.5
+alpha: 0.35
+drawUnderUnits: false
+ySpeedRelative: 4
+priority:high
+[effect_build114]
+createWhenZoomedOut: false
+priority:low
+xOffsetRelativeRandom: 10
+yOffsetRelativeRandom: 16
+image: ROOT:特效贴图/毒雾.png
+life: 5
+drawType:displacement
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+fadeInTime:2
+scaleFrom: 1.3
+scaleTo: 0.25
+alpha: 2
+drawUnderUnits:true
+ySpeedRelative:5
+atmospheric: true
+[effect_build514]
+image: ROOT:特效贴图/孢子.png
+priority: low
+life:30
+lifeRandom:20
+scaleFrom:0.8
+scaleTo:0.1
+alpha:0.8
+xOffsetRelativeRandom: 30
+yOffsetRelativeRandom: 30
+delayedStartTimer:5
+delayedStartTimerRandom:10
+hSpeed: 0.7
+hSpeedRandom: 0.4
+[effect_build191]
+image: ROOT:特效贴图/解构.png
+priority: low
+life:30
+lifeRandom:20
+scaleFrom:1
+scaleTo:0.25
+alpha:0.8
+xOffsetRelativeRandom: 30
+yOffsetRelativeRandom: -60
+drawType:displacement
+delayedStartTimer:5
+delayedStartTimerRandom:10
+hSpeed: 0.7
+hSpeedRandom: 0.4
+[graphics]
+image_shadow:AUTO
+shadowOffsetX:3
+shadowOffsetY:3
+repairEffectAtTarget:CUSTOM:build114*1,build514*2,s1*2
+repairEffectRate: 1
+repairEffect:CUSTOM:build514,s1*2,s2
+reclaimEffectRate:2
+reclaimEffectAtTarget:CUSTOM:build114,build191,s1*2
+reclaimEffect:CUSTOM:build514,s1*2,s2
+[action_腐蚀伤害]
+buildSpeed:0s
+text:单位被腐蚀
+isLocked:true
+isGuiBlinking:true
+description:单位已被腐蚀\n单位腐蚀过后会造成一段时间的持续伤害\n会逐渐衰减
+isVisible:if self.resource('zxx') > 0
+[hiddenAction_孢子特效]
+spawnEffects:CUSTOM:sporee*20,sporeeUnit*15
+#autoTrigger:true
+autoTrigger:if self.resource('spore') > 0
+[effect_sporee]
+priority:high
+image: ROOT:ui/spore.png
+#image:star.png
+life: 200
+lifeRandom:200
+fadeOut: true
+attachedToUnit: false
+color: #ffffff
+scaleFrom: 0.5
+scaleTo: 0.75
+alpha: 0.5
+drawUnderUnits:false
+xOffsetRelativeRandom:20
+yOffsetRelativeRandom:20
+xSpeedAbsoluteRandom:0.75
+ySpeedAbsoluteRandom:0.75
+delayedStartTimer:50
+delayedStartTimerRandom:50
+showInFog:true
+physics:true
+dirSpeed:0.72
+physicsGravity:-0.4
+[effect_sporeeUnit]
+priority:high
+image: ROOT:ui/spore.png
+#image:star.png
+life: 50
+lifeRandom:20
+fadeOut: true
+attachedToUnit: true
+color: #ffffff
+scaleFrom: 0.5
+scaleTo: 0.75
+alpha: 0.5
+drawUnderUnits:false
+xOffsetRelativeRandom:20
+yOffsetRelativeRandom:20
+xSpeedAbsoluteRandom:0.5
+ySpeedAbsoluteRandom:0.5
+delayedStartTimer:20
+delayedStartTimerRandom:20
+showInFog:true
+physics:true
+dirSpeed:0.72
+physicsGravity:-0.4
+[resource_spore]
+hidden:true
+[core]
+@memory damage:float
+defineUnitMemory: float damage
+tags:无视孢子
+[global_resource_DNA]
+hidden: false
+displayName: 基因肉坨
+displayNameShort: Deoxyribonucleic acid
+iconImage: ROOT:ui/资金图/DNA.png
+displayColor: #ff0000
+[action_T1]
+text:[T1单位]
+description:-单位科技:T1\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+displayType:infoOnlyNoBox
+isLocked:true
+isVisible:if ${core.techLevel} == 1
+isLockedMessage:[关于]
+iconExtraImage:ROOT:ui/T1.lng
+convertTo:${core.name}
+[action_T2]
+text:[T2单位]
+description:-单位科技:T2\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+displayType:infoOnlyNoBox
+isLocked:true
+isVisible:if ${core.techLevel} == 2
+isLockedMessage:[关于]
+iconExtraImage:ROOT:ui/T2.lng
+convertTo:${core.name}
+[action_T3]
+text:[T3单位]
+description:-单位科技:T3\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+displayType:infoOnlyNoBox
+isLocked:true
+isVisible:if ${core.techLevel} == 3
+isLockedMessage:[关于]
+iconExtraImage:ROOT:ui/T3.lng
+convertTo:${core.name}
+[core]
+techLevel:1
+armour:0
+maxShield:0
+energyMax:0
+energyRegen:0
+shieldRegen:0
+
+#soundOnMoveOrder:ROOT:/音效/虫族母巢/虫族移动.wav
+#soundOnAttackOrder:ROOT:/音效/虫族母巢/虫族攻击.wav
+#下方代码使用时复制，放入单位里面然后改文件名称
+#[hiddenAction_创建播放]
+#autoTriggerOnEvent:created
+#playSoundToPlayer:ROOT://音效/未来军指挥官/单位的生产音效.wav
+[hiddenAction_死亡播放]
+autoTriggerOnEvent:destroyed
+playSoundAtUnit:ROOT:/音效/虫族母巢/虫族死亡.wav
+[global_resource_无线电]
+hidden: true
+
+
+
+
+
+[hiddenAction_w1]
+@define coc=self.resource('zxx')
+autoTrigger:if self.resource('zxx') > 0
+setUnitStats:shieldRegen=- ${coc},selfRegenRate=- ${coc}
+addResources:zxx=-0.015
+[hiddenAction_corrodedOver]
+autoTrigger:if self.resource('zxx') == 0
+resetUnitStats:true
+[hiddenAction_corrodedNoIs-]
+autoTrigger:if self.resource('zxx') < 0
+resourceAmount_setValue:0
+resourceAmount:zxx
+[resource_zxx]
+hidden:true
+[hiddenAction_corrodedLimit]
+autoTrigger:if self.resource('zxx') >= 5
+resourceAmount_setValue:4.99
+resourceAmount:zxx
+
+
+
+
+[decal_safeModeDecal]
+layer:onTop
+order:0
+onlyTeam:own
+onlyInPreview:true
+imageScale:1.0
+color:#000000
+#createWhenOffscreen:true
+image:SHADOW:${graphics.image}
+total_frames:${graphics.total_frames}
+isVisible:if self.Resource('safeMode') > 0
+
+[decal_safeModeDecal2]
+layer:onTop
+order:0
+onlyTeam:own
+onlyInPreview:false
+imageScale:1.0
+color:#000000
+#createWhenOffscreen:true
+image:SHADOW:${graphics.image}
+total_frames:${graphics.total_frames}
+isVisible:if self.Resource('safeMode') > 0
+
+
+[global_resource_safeMode]
+hidden:true
+
+[graphics]
+total_frames:1

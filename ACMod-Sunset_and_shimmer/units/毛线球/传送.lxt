@@ -1,0 +1,49 @@
+#===闪现===
+#[action_添加闪现]
+#price:  10000
+#text: 建造闪现模块
+#description: 建造闪现模块. 允许传送到目的地
+#displayType: NONE
+#buildSpeed: 50s
+#pos: 0.3
+#isVisible: if not self.hasFlag(id=1)
+#isActive: if not self.hasFlag(id=1)
+#addResources: setFlag=1
+#iconImage: SHARED:icon_build.png
+#allowMultipleInQueue: false
+#### Blink ####
+[action_闪现]
+#isVisible: if self.hasFlag(id=1)
+fireTurretXAtGround: blink
+fireTurretXAtGround_withProjectile: blink
+whenBuilding_cannotMove: true
+text: 传送
+displayType: action
+#buildSpeed: 3.5s
+buildSpeed: 0s
+pos: 0.1
+whenBuilding_playAnimation: blink
+highPriorityQueue: true
+onlyOneUnitAtATime: true
+iconImage: SHARED:icon_attack_point.png
+allowMultipleInQueue: false
+#addActionCooldownTime: 25s
+[turret_blink]
+x: 0
+y: 0
+canShoot:false
+invisible: true
+size: 1
+turnSpeed: 40
+limitingRange: 2360881
+[projectile_blink]
+teleportSource: true
+instant: true
+directDamage: 0
+life: 99999
+speed: 1
+targetGround: true
+deflectionPower:-1
+shouldRevealFog:true
+explodeEffect: CUSTOM:blinkFlash,CUSTOM:blinkGlow, CUSTOM:blinkChargeOut_displacement
+effectOnCreate: CUSTOM:blinkFlash,CUSTOM:blinkGlow, CUSTOM:blinkEnter_displacement

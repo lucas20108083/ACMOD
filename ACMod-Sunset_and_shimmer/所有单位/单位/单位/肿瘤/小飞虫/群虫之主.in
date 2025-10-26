@@ -1,0 +1,6 @@
+[core]
+name:群虫之主
+displayDescription:一群小飞虫的主体，可以攻击
+maxHp:1200
+techLevel:2
+price: 850

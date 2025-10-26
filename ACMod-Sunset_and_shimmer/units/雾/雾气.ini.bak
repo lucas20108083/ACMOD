@@ -1,0 +1,91 @@
+[core]
+name:colorfogs
+class: CustomUnitMetadata
+price: 1000
+footprint: -1000,-1000,1000,1000
+constructionFootprint:  -1,-1,1,1
+maxHp: 1000
+canNotBeDamaged:true
+armour: 9999
+fogOfWarSightRange:-1
+canNotBeDirectlyAttacked:true
+armourMinDamageToKeep: 0
+mass: 9000
+isUnselectable:true
+energyMax:1
+isUnrepairableUnit:true
+techLevel: 1
+buildSpeed: 0.01
+onNewMapSpawn:mapCenter_eachActiveTeam
+radius: 10000000
+isBio: false
+isBuilding: true
+disableAllUnitCollisions:true
+energyRegen:0
+explodeOnDeath:false
+hideScorchMark:true
+showOnMinimap:false
+[graphics]
+total_frames: 1
+drawLayer: top
+image:  SHARED:blank.png
+image_back:  NONE
+image_wreak:  NONE
+image_turret: NONE
+showEnergyBar:false
+isVisibleToEnemies:false
+scaleImagesTo: 60000
+icon_zoomed_out_neverShow: true
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+image_offsetX:3
+image_offsetY:20
+[decal_redfog]
+layer:beforeUI
+imageScale:40
+image:fog.png
+onlyTeam:own
+alpha:0.45
+color:#750000
+isVisible:if  self.globalTeamTags(includes="zl")
+[decal_ashfog]
+layer:beforeUI
+imageScale:40
+image:fog.png
+color:#6D6D6D
+alpha:0.45
+onlyTeam:own
+isVisible:if  self.globalTeamTags(includes="jf")
+[decal_ash2fog]
+layer:beforeUI
+imageScale:40
+alpha:0.45
+image:fog.png
+color:#6D6D6D
+onlyTeam:own
+isVisible:if not self.globalTeamTags(includes="jf") and not self.globalTeamTags(includes="zl") and not self.globalTeamTags(includes="xk")
+[decal_bluefog]
+layer:beforeUI
+imageScale:40
+alpha:0.45
+image:fog.png
+color:#003296
+onlyTeam:own
+isVisible:if  self.globalTeamTags(includes="xk")
+[attack]
+canAttack: false
+canAttackFlyingUnits: false
+canAttackLandUnits:   false
+canAttackUnderwaterUnits: false
+maxAttackRange: 450
+shootDelay: 250000
+
+[movement]
+movementType: AIR
+moveSpeed: 0
+moveAccelerationSpeed: 0
+moveDecelerationSpeed: 0
+targetHeight: -1
+maxTurnSpeed: 0
+turnAcceleration: 0

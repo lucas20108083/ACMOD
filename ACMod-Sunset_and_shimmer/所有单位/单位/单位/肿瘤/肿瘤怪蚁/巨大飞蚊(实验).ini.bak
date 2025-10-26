@@ -1,0 +1,122 @@
+[core]
+name:暴吸巨蚊
+copyFrom: 肿瘤飞蚊.ini
+displayText:华丽暴吸巨蚊
+displayDescription:-战术生物\n-快速摧毁建筑\n-吸入能量可被动自爆释放硫酸以及孢子 \n-吸入的能量越多爆炸瞬间伤害越高\n可以修复单位
+maxHp:10000
+price:25000,DNA=7500
+nanoRepairSpeed:0.65
+techLevel:3
+mass:10
+isBuilder:true
+canRepairBuildings:true
+energyMax:100
+energyStartingPercentage:0
+canRepairUnits:true
+buildSpeed:30s
+radius:20
+canReclaimResources:true
+transportSlotsNeeded:1
+[attack]
+maxAttackRange:80
+isMelee:true
+[ai]
+useAsBuilder:true
+[graphics]
+image:华丽暴吸巨蚊.png
+image_wreak:华丽暴吸巨蚊死.png
+teamColoringMode:disabled
+scaleImagesTo: 65
+[projectile_射了]
+directDamage: 30
+buildingDamageMultiplier:30
+[turret_射了]
+resourceUsage: hp=-50,energy=-0.45
+[turret_bomb]
+x:0
+y:0
+canAttack:false
+projectile:bloodbomb
+[projectile_bloodbomb]
+life:60
+spawnUnit:SB_Spore*20
+areaExpandTime:20
+mutatorX_addResourcesAreaHit:spore:500,zxx:235
+mutatorX_ifUnitWithoutTags:sb
+explodeOnEndOfLife:true
+areaRadius:640
+areaHitAirAndLandAtSameTime:true
+areaDamage:5000
+[hiddenAction_伤害加强]
+setUnitStats:shootDamageMultiplier += self.energy()
+autoTrigger:true
+#
+[action_111]
+text:血爆
+description:放弃此超级武器\n自杀式爆炸攻击
+isLocked:if self.hp > 5000
+isLockedMessage:你的hp未小于50%\n请自行送死或者直接冲家
+deleteSelf:true
+buildSpeed:0.05s
+canPlayerCancel:false
+spawnEffects:爆1,血1*62,血2*62
+displayType:action
+fireTurretXAtGround_withOffset:0,0
+allowMultipleInQueue:false
+alwaysSinglePress:true
+fireTurretXAtGround:bomb
+addResources:hp=-100000
+[effect_血1]
+priority:low
+life: 725
+lifeRandom:12
+attachedToUnit: false
+color: #00FF00
+scaleFrom:3
+scaleTo:2.35
+alpha: 0.5
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:blood.png
+dirSpeedRandom:3
+dirOffsetRandom:5
+hOffset:3
+ySpeedRelativeRandom:3.4222
+xSpeedRelativeRandom:3.3222
+physicsGravity:0.054
+physics:true
+atmospheric:true
+[effect_血2]
+priority:low
+life: 800
+attachedToUnit: false
+color: #FF0000
+scaleFrom:3
+scaleTo:2.45
+lifeRandom:12
+alpha: 0.5
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:blood.png
+dirSpeedRandom:3
+dirOffsetRandom:5
+hOffset:3
+ySpeedRelativeRandom:3.4222
+xSpeedRelativeRandom:3.3222
+physicsGravity:0.07
+physics:true
+atmospheric:true
+[effect_爆1]
+priority:veryhigh
+total_frames:14
+life: 200
+attachedToUnit: false
+color: #00FF00
+scaleFrom:29
+scaleTo:36
+alpha: 1
+drawUnderUnits:false
+animateFrameSpeed:0.2
+animateFrameEnd:13
+animateFrameStart:0
+image:ROOT:fire.png

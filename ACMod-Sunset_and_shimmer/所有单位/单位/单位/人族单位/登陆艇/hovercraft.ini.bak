@@ -1,0 +1,70 @@
+[core]
+name:登陆艇
+class:CustomUnitMetadata
+price:600,MAC=215
+maxHp:450
+displayDescription:运载8个单位\n速度慢
+mass:1000
+techLevel:1
+buildSpeed:0.0015
+availableInDemo:true
+transportUnitsBlockOtherTransports:false
+radius:15
+transportSlotsNeeded:114514
+#displayRadius: 13
+tags:land,tank,med,hovercraft
+#fogOfWarSightRange: 22
+#fogOfWarSightRangeWhileNotBuilt: 15
+isBio:false
+maxTransportingUnits:8
+[graphics]
+total_frames:1
+image:hovercraft.png
+image_wreak:hovercraft_dead.png
+image_turret:NONE
+#scaleImagesTo: 20
+#scaleTurretImagesTo: 9
+#lock_body_rotation_with_main_turret: true
+#AUTO
+image_shadow:AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+splastEffect:true
+[attack]
+turretRotateWithBody:false
+canAttack:false
+canAttackFlyingUnits:false
+canAttackLandUnits:false
+canAttackUnderwaterUnits:false
+turretSize:7
+turretTurnSpeed:4
+maxAttackRange:110
+shootDelay:50
+isFixedFiring:false
+[movement]
+movementType:OVER_CLIFF_WATER
+moveSpeed:0.9
+moveAccelerationSpeed:0.03
+moveDecelerationSpeed:0.06
+targetHeight:3
+targetHeightDrift:1.5
+maxTurnSpeed:2
+turnAcceleration:0.05
+moveSlidingMode:false
+moveIgnoringBody:false
+moveSlidingDir:181
+[ai]
+buildPriority:0.35
+useAsTransport:true
+noneInBaseExtraPriority:0.75
+noneGlobalExtraPriority:0.95
+maxEachBase:999999
+maxGlobal:99999999
+[action_升级]
+text:升级重型登陆艇
+pos:-1
+price:700
+description:升级成可运载20个单位的重型登陆艇，加强装甲
+convertTo:mEkHeavyHoverCraft
+buildSpeed:20s
+displayType:infoOnly

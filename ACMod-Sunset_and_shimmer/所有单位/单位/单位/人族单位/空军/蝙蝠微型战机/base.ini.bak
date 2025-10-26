@@ -1,0 +1,93 @@
+[core]
+name:batAirShip
+class: CustomUnitMetadata
+price: 500,MAC=300
+maxHp: 300
+mass: 3000
+displayText:蝙蝠微型战机
+altNames:蝙蝠微型战机,蝙蝠战机
+displayDescription:对地对空\n快速度\n轻型装甲，适合用于群体突袭
+techLevel: 1
+buildSpeed:5.3s
+radius: 16
+isBio: false
+softCollisionOnAll: 1
+builtFrom_1_name: airFactory2
+builtFrom_1_pos:  1.4
+[graphics]
+#teamColoringMode:hueShift
+imageScale:2
+total_frames: 1
+image:        base.png
+image_wreak:  none
+image_turret: none
+lock_body_rotation_with_main_turret: true
+image_shadow: auto
+shadowOffsetX:1
+shadowOffsetY:1
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+maxAttackRange: 170
+shootDelay: 0.22s
+attackMovement:bomber
+turretRotateWithBody: true
+[turret_1]
+invisible: true
+x: 0
+y: 0
+idleDir:0
+projectile: 1
+size: 10
+turnSpeed: 5.7
+turnSpeedAcceleration: 0.5
+canShoot: false
+recoilOffset: -2
+recoilOutTime: 3
+recoilReturnTime: 10
+[turret_2]
+x: 0
+y: 3
+projectile: 1
+size: 5
+attachedTo: 1
+slave: true
+turnSpeed: 0
+turnSpeedAcceleration: 1
+shoot_sound:shooting.wav
+shoot_sound_vol:0.12
+shoot_flame: small
+shoot_light: #f0ff0000
+recoilOffset: -1
+recoilOutTime: 3
+recoilReturnTime: 10
+[projectile_1]
+directDamage: 60
+life: 80
+speed: 12
+drawSize: 0.85
+color: #ff0000
+lightColor: #ff0000
+lightSize: 0.4
+[movement]
+movementType: AIR
+moveSpeed: 1.5
+moveAccelerationSpeed: 0.13
+moveDecelerationSpeed: 0.1
+maxTurnSpeed: 5.7
+turnAcceleration: 0.5
+reverseSpeedPercentage: 0.75
+targetHeight: 15
+targetHeightDrift: 4
+slowDeathFall: true
+reverseSpeedPercentage:0
+joinsGroupFormations:false
+moveSlidingDir:  35
+[ai]
+buildPriority:6494878
+noneInBaseExtraPriority:46648484
+noneGlobalExtraPriority:46648484
+maxEachBase:2
+maxGlobal:3

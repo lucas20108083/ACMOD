@@ -1,0 +1,45 @@
+[core]
+name:虚无自爆虫
+copyFrom: 模板.ini
+displayDescription:-在体内存储能够造成瞬间高温伤害的虚空物质自杀式攻击敌人\n-只能攻击陆地单位
+displayText:爆炸飞蜂
+maxHp:800
+techLevel:1
+mass:10
+radius:15
+transportSlotsNeeded:1
+[ai]
+useAsAttacker:true
+[graphics]
+image:base.png
+teamColoringMode:disabled
+[effect_波]
+priority:high
+image:effect.png
+life: 60
+color:#EE56D0EF
+scaleFrom: 0.25
+scaleTo: 1.25
+[projectile_1]
+areaRadius:260
+areaDamage:275
+image:SHARED:blank.png
+trailEffect:true
+flameWeapon:true
+largeHitEffect:true
+explodeEffectOnShield:波,smoke114
+explodeEffect:波,smoke114
+speed:600
+life:300
+[effect_smoke114]
+priority:veryhigh
+image: area.png
+drawType:displacement
+life:45
+attachedToUnit: true
+color: #111111
+scaleFrom:3
+scaleTo: 9
+alpha: 0.75
+drawUnderUnits:true
+atmospheric:true

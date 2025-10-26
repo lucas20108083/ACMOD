@@ -1,0 +1,21 @@
+[core]
+tags:显
+[hiddenAction_躲]
+autoTrigger:if self.resource('秒') > 7
+addResources:秒:-8
+#8秒后变回去
+#把下面的复制到你显形单位里面 填这个单位的隐形版本的名字
+#convertTo:名字
+[hiddenAction_读秒]
+autoTrigger:true
+addResources:秒:1
+[resource_秒]
+hidden:true
+[action_警告]
+text:⚠已暴露⚠
+buildSpeed:0s
+displayType:infoOnlyNoBox
+isLocked:true
+isLockedMessage:你已被雷达侦测到
+description:还有%{8 - self.resource('秒')}后恢复隐形状态
+convertTo:${core.name}

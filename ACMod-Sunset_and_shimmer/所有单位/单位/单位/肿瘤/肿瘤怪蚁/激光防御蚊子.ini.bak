@@ -1,0 +1,115 @@
+[core]
+name:飞翼激光防御肿瘤怪蚁
+displayDescription:-极其耐用的飞行拦截器\n-无法攻击\n-速度中等，可退化
+maxHp:1000
+mass:100
+price:450,DNA=25
+radius:10
+fogOfWarSightRange:10
+techLevel:1
+buildSpeed:8s
+isBio:true
+energyMax:300
+energyRegen:0.6
+energyStartingPercentage:100
+[graphics]
+image:坎坎坷坷uyi
+image_wreak:flydie
+scaleImagesTo:30
+total_frames:2
+animation_moving_start:0
+animation_moving_end:1
+animation_moving_speed:2
+animation_moving_pingPong:false
+animation_idle_start:0
+animation_idle_end:1
+animation_idle_speed:2
+animation_idle_pingPong:false
+image_shadow:AUTO
+[attack]
+canAttack:false
+[movement]
+movementType:AIR
+moveSpeed:1.5
+moveAccelerationSpeed:0.007
+moveDecelerationSpeed:0.003
+targetHeightDrift:3
+targetHeight:45
+maxTurnSpeed:1.6
+turnAcceleration:0.08
+moveSlidingMode:false
+moveIgnoringBody:false
+moveSlidingDir:25
+reverseSpeedPercentage:0
+slowDeathFall:true
+[turret_激光防御]
+y:0
+x:0
+image:激光拦截眼_1.png
+laserDefenceEnergyUse:20
+[action_就是进化]
+convertTo:飞翼拦截肿瘤怪蚁
+buildSpeed:8s
+price:DNA=10
+text:退化
+description:-退化眼球\n-转为可攻击神经未被压迫的肿瘤怪蚁
+[hiddenAction_爆血]
+autoTriggerOnEvent:destroyed
+spawnEffects:血1*37,血2*28,血3*38
+[effect_血1]
+priority:veryhigh
+life: 200
+attachedToUnit: false
+color: #FF0000
+scaleFrom:0.25
+scaleTo:0.25
+alpha: 0.5
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:blood.png
+dirSpeedRandom:2
+dirOffsetRandom:1
+hOffset:2
+ySpeedRelativeRandom:1.2
+xSpeedRelativeRandom:1.1
+physicsGravity:0.25
+physics:true
+atmospheric:true
+[effect_血2]
+priority:veryhigh
+life: 195
+attachedToUnit: false
+color: #8B0000
+scaleFrom:0.35
+scaleTo:0.35
+alpha: 0.35
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:blood.png
+dirSpeedRandom:5
+dirOffsetRandom:5
+hOffset:12
+ySpeedRelativeRandom:0.7
+xSpeedRelativeRandom:0.8
+physicsGravity:0.35
+physics:true
+atmospheric:true
+[effect_血3]
+priority:veryhigh
+life: 125
+attachedToUnit: false
+color: #DC143C
+scaleFrom:0.2
+scaleTo:0.2
+alpha: 0.75
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:blood.png
+dirSpeedRandom:4
+dirOffsetRandom:4
+hOffset:4
+ySpeedRelativeRandom:1.2
+xSpeedRelativeRandom:1.5
+physicsGravity:0.2
+physics:true
+atmospheric:true

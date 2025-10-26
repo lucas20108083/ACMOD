@@ -1,0 +1,17 @@
+[action_没电了]
+text:负载过高--
+displayType:infoOnlyNoBox
+description: 
+isLocked:true
+isLockedMessage:设备处于停电状态
+buildSpeed:0s
+isVisible:if self.resource('电') < 1
+[hiddenAction_没电]
+autoTrigger:if self.resource('电') < 0.05
+setUnitStats:moveSpeed=0,maxTurnSpeed=0,maxAttackRange=0
+[hiddenAction_有电]
+autoTrigger:if self.resource('电') > 0.04
+resetUnitStats:true
+[core]
+generation_resources:电:-0.43
+generation_active:if self.isMoving() or self.isAttacking

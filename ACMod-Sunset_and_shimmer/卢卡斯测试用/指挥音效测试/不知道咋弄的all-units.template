@@ -1,0 +1,11 @@
+[core]
+soundOnMoveOrder:ROOT:/音效/未来军指挥官/移动至这里.wav
+soundOnAttackOrder:ROOT:/音效/未来军指挥官/攻击此处.wav
+dont_load:false
+#下方代码使用时复制，放入单位里面然后改文件名称
+#[hiddenAction_创建播放]
+#autoTriggerOnEvent:created
+#playSoundToPlayer:ROOT://音效/未来军指挥官/单位的生产音效.wav
+#[hiddenAction_死亡播放]
+#autoTriggerOnEvent:destroyed
+#播放声音至玩家ROOT:/音效/未来军指挥官/单位的死亡音效.wav

@@ -1,0 +1,82 @@
+[core]
+autoTriggerCooldownTime_allowDangerousHighCPU:true
+autoTriggerCooldownTime:0.01s
+name:虚空螃蟹2
+displayText:啃食者
+displayDescription:近战攻击单位\n螃蟹(?)\n可跨越山崖\n在水下可快速移动
+mass:135
+maxHp:700
+armour:75
+maxShield:205
+selfRegenRate:0.11
+shieldRegen:0.16
+radius:25
+class: CustomUnitMetadata
+techLevel:1
+buildSpeed:12.2s
+isBio:false
+price:700,VE:700
+[graphics]
+image:base.png
+image_turret:NONE
+image_shadow:AUTO
+shadowOffsetX:2
+shadowOffsetY:2
+splastEffect:true
+lock_body_rotation_with_main_turret:true
+[attack]
+isMelee:true
+canAttack:true
+canAttackFlyingUnits:false
+canAttackLandUnits:true
+canAttackUnderwaterUnits:false
+isFixedFiring:true
+turretSize:35
+turretTurnSpeed:3
+maxAttackRange:15
+shootDelay:0.5s
+[turret_1]
+x:0
+shoot_sound:large_gun_fire2
+shoot_sound_vol:0.2
+recoilOffset:4
+recoilOutTime:6
+recoilReturnTime:4
+y:4
+[projectile_1]
+life:20
+instant:true
+directDamage:50
+areaDamage:60
+areaRadius:25
+[leg_1]
+x: -30
+y: -7
+moveSpeed: 2.5
+resetAngle:5
+heightSpeed: 0.5
+dust_effect: true
+image_leg:  leg.png
+[leg_2]
+x: 30
+y: -8
+copyFrom: 1
+[movement]
+movementType:over_cliff_water
+moveSpeed:1.5
+moveAccelerationSpeed:0.25
+moveDecelerationSpeed:0.15
+maxTurnSpeed:2.2
+targetHeightDrift:0
+targetHeight:-10
+turnAcceleration:0.2
+[arm_1]
+image_end:basetexture.png
+spinRate:10
+drawOverBody:true
+x:0
+y:-7
+[hiddenAction_1]
+autoTrigger:if self.isOverPassableTile(type='land')
+convertTo:虚空螃蟹
+#如果自身在这类通行地块上则执行，类型：无、陆地、建筑、空中、水面、两栖、跨悬崖、跨水和悬崖 NONE、LAND、BUILDING、AIR、WATER、HOVER、OVER_CLIFF、OVER_CLIFF_WATER

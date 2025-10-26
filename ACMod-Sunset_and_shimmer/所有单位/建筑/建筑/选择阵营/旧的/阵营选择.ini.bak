@@ -1,0 +1,93 @@
+[core]
+#<保存后下面的逻辑值中间的空格会被删除，会报错所以请保存后删除掉
+name: 旧版阵营选择
+maxHp: 1145
+mass: 114514
+price: 114
+radius: 10
+displayDescription: 你的阵营选择器
+isPickableStartingUnit: true
+isBuilding: true
+footprint: 0,0,0,0
+constructionFootprint: 0,0,0,0
+[graphics]
+image: 卢卡斯带底座
+scaleImagesTo: 60
+[attack]
+canAttack: false
+[movement]
+movementType: BUILDING
+[resource_已游玩时间]
+hidden: true
+[hiddenAction_1]
+autoTrigger: true
+addResources: 已游玩时间:1
+[action_15秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 5
+showMessageToPlayer: 将在15秒后自动选择阵营
+[action_10秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 10
+showMessageToPlayer: 将在10秒后自动选择阵营
+[action_5秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 15
+showMessageToPlayer: 将在5秒后自动选择阵营
+[action_4秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 16
+showMessageToPlayer: 还有4秒
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 17
+showMessageToPlayer: 还有3秒
+[action_2秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 18
+showMessageToPlayer: 还有2秒
+[action_1秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 19
+showMessageToPlayer: 还有1秒
+[action_0秒提醒]
+isVisible: false
+autoTrigger: if self.resource('已游玩时间')== 20
+showMessageToPlayer: 已选择阵营
+[action_选择人类阵营]
+convertTo: 指挥中心
+buildSpeed: 0.25s
+text: 选择人类军方阵营
+produceUnits: 外骨骼士兵建造辅助器
+autoTrigger: if self.teamid%2==0 and self.resource('已游玩时间')== 20
+isLocked:if self.isControlledByAI()
+isLockedMessage:你是AI，没有人权
+iconImage:人类未来军.png
+showMessageToPlayer:已手动选择
+[action_选择肿瘤阵营]
+isLocked:if self.isControlledByAI()
+isLockedMessage:你是AI，没有人权
+showMessageToPlayer:已手动选择
+produceUnits: 肿瘤筑巢蚁
+convertTo: 外星指挥中心
+buildSpeed: 0.25s
+text: 选择嗜血沙尘暴(肿瘤)阵营
+iconImage:沙尘暴.png
+addResources: 无线电=2
+autoTrigger: if self.teamid%2==1 and self.resource('已游玩时间')==20
+[canBuild_3333]
+name: builder
+pos: -1
+isVisible: false
+[hiddenAction_jgbvx]
+showMessageToPlayer: 将在20秒后自动选择阵营，请耐心等待
+autoTriggerOnEvent: created
+[hiddenAction_人]
+produceUnits: 外骨骼士兵建造辅助器
+convertTo:指挥中心
+autoTrigger:if self. numberOfUnitsInEnemyTeam(withTag='肿瘤',greaterThan=0)
+showMessageToPlayer:对方已有人选择肿瘤阵营，已自动变为人族阵营
+[hiddenAction_肿瘤]
+produceUnits: 肿瘤筑巢蚁
+convertTo:外星指挥中心
+autoTrigger:if self. numberOfUnitsInEnemyTeam(withTag='指挥中心',greaterThan=0)
+showMessageToPlayer:对方已有人选择人族阵营，已自动变为肿瘤阵营

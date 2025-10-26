@@ -1,0 +1,36 @@
+[core]
+name:CoreUnit
+displayText:初始单位核心
+displayDescription:覆盖指挥中心 初始单位死亡后会爆炸
+overrideAndReplace:commandCenter
+maxHp:100000
+mass:266
+radius:1
+selfRegenRate:1666
+isBuilding:true
+price:136
+canNotBeGivenOrdersByPlayer:true
+canNotBeDirectlyAttacked:true
+isPickableStartingUnit:true
+showOnMinimapToEnemies:true
+explodeOnDeath: false
+hideScorchMark: true
+disableAllUnitCollisions: true
+isUnselectable: true
+[graphics]
+image:SHARED:blank.png
+image_wreak:SHARED:blank.png
+[movement]
+movementType:BUILDING
+[attack]
+canAttack:false
+[action_123]
+text:创造选择阵营
+autoTriggerOnEvent:created
+spawnUnits:异星灾变阵营选择
+addResources:初始单位死亡:2
+[action_619]
+text:紫砂
+addResources:hp:-9999999
+
+autoTrigger:if self.resource('初始单位死亡') < 2

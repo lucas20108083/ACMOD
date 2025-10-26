@@ -1,0 +1,77 @@
+#左上右下
+#byMxher
+[core]
+name:天启虚空塔T2
+displayText:天启T2塔
+displayDescription:------
+mass:9000
+maxHp:1100
+radius:50
+class: CustomUnitMetadata
+techLevel:2
+maxShield:700
+buildSpeed:30s
+isBio:false
+buildingToFootprintOffsetX:40
+buildingToFootprintOffsetY:40
+price:1800,VE:3000
+constructionFootprint:0,0,3,3
+footprint:0,0,3,3
+isBuilding:true
+[graphics]
+#teamColorsOnTurret:true
+#teamColoringMode:hueShift
+imageScale:0.75
+image:base.png
+turretImageScale:1.75
+image_turret:apocalypse.png
+[attack]
+canAttack:true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+maxAttackRange: 265
+shootDelay: 0.45s
+[turret_1]
+x: 0
+y: 2.1
+projectile: 1
+turnSpeedAcceleration: 1.0
+shoot_sound:firing3
+shoot_sound_vol:0.2
+shoot_flame:none
+shoot_light:#0000FF
+recoilOffset: -3
+[projectile_1]
+directDamage: 60
+life: 330
+mutatorX_ifUnitWithoutTags:无视zxx
+mutatorX_addResourcesDirectHit:zxx:0.08
+speed: 7.5
+color:#ffffff
+trailEffect:traileffect
+trailEffectRate:1
+image:水球子弹.png
+drawSize:1
+[movement]
+movementType:none
+
+
+
+
+
+[effect_traileffect]
+image: ROOT:blood.png
+life: 50
+fadeOut: true
+attachedToUnit: false
+color: #0000ff
+scaleFrom: 0.25
+scaleTo: 0.25
+alpha: 0.75
+drawUnderUnits:true
+liveAfterAttachedDies: true
+hSpeed:-0.3
+dirOffsetRandom:180
+yOffsetAbsoluteRandom:-0.15
+atmospheric: true

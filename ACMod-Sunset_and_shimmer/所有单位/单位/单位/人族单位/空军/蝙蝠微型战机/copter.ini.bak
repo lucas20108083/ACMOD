@@ -1,0 +1,100 @@
+[core]
+name: copter
+class: CustomUnitMetadata
+price: 800
+maxHp: 600
+mass: 3500
+displayText:武装直升机
+displayDescription:只对地\n慢速度\n重型装甲
+techLevel: 1
+buildSpeed:11s
+radius: 30
+isBio: false
+softCollisionOnAll: 3
+builtFrom_1_name: airFactory2
+builtFrom_1_pos:  3.1
+[graphics]
+teamColoringMode:hueShift
+imageScale:2
+total_frames: 4
+image:        copter.png
+image_wreak:  none
+image_turret: none
+lock_body_rotation_with_main_turret: true
+image_shadow: auto
+shadowOffsetX:1
+shadowOffsetY:1
+[animation_pain]
+onActions : idle
+body_0s: {frame:0}
+body_0.1s: {frame:1}
+body_0.2s: {frame:2}
+body_0.3s: {frame:3}
+[animation_pain3]
+onActions : move
+body_0s: {frame:0}
+body_0.075s: {frame:1}
+body_0.175s: {frame:2}
+body_0.275s: {frame:3}
+[animation_pain2]
+onActions : attack
+body_0s: {frame:0}
+body_0.12s: {frame:1}
+body_0.22s: {frame:2}
+body_0.32s: {frame:3}
+[attack]
+canAttack: true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+maxAttackRange: 200
+shootDelay: 0.45s
+turretRotateWithBody: true
+[turret_1]
+invisible: true
+x: 0
+y: 0
+idleDir:0
+projectile: 1
+size: 10
+turnSpeed: 5.7
+turnSpeedAcceleration: 0.5
+canShoot: false
+recoilOffset: -2
+recoilOutTime: 3
+recoilReturnTime: 10
+[turret_2]
+x: 0
+y: 5
+projectile: 1
+size: 5
+attachedTo: 1
+slave: true
+turnSpeed: 0
+turnSpeedAcceleration: 1
+shoot_sound:shooting.wav
+shoot_sound_vol:0.2
+shoot_flame: small
+shoot_light: #f0ff0000
+recoilOffset: -1
+recoilOutTime: 3
+recoilReturnTime: 10
+[projectile_1]
+directDamage: 80
+life: 100
+speed: 7
+drawSize: 1.8
+color: #ff0000
+lightColor: #ff0000
+lightSize: 0.4
+[movement]
+movementType: AIR
+moveSpeed: 1
+moveAccelerationSpeed: 0.1
+moveDecelerationSpeed: 0.1
+maxTurnSpeed: 5.7
+turnAcceleration: 0.5
+reverseSpeedPercentage: 0.75
+targetHeight: 35
+targetHeightDrift: 4
+slowDeathFall: true

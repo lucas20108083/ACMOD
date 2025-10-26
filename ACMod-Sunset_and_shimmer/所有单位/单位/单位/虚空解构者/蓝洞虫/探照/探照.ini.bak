@@ -1,0 +1,26 @@
+[core]
+name:虚无探照虫
+copyFrom: 模板.ini
+displayDescription:-燃烧体内的虚空物质达到照明的效果\n-前期探雾主要力量
+maxHp:800
+displayText:侦查飞蜂
+techLevel:1
+mass:10
+radius:15
+transportSlotsNeeded:1
+[ai]
+useAsAttacker:true
+[graphics]
+image:base.png
+teamColoringMode:disabled
+[effect_波]
+priority:high
+image:effect.png
+life: 50
+priority:low
+color:#ffffff
+scaleFrom: 0.25
+scaleTo: 0.75
+[hiddenAction_1]
+autoTrigger:true
+spawnEffects:波

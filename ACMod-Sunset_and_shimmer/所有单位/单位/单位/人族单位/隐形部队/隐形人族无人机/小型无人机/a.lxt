@@ -1,0 +1,22 @@
+[core]
+showOnMinimapToEnemies:false
+canOnlyBeAttackedByUnitsWithTags:反
+tags:隐形
+[graphics]
+isVisibleToEnemies:false
+[hiddenAction_显]
+autoTrigger:if self.hasTakenDamage(withinSeconds=1)
+#如果1秒内被攻击过(只有雷达能攻击隐形单位，不存在误判)
+convertTo:${core.name}[显]
+#传换为"这个单位"的名字后面加个[显]
+#传换的单位就是不复制这个文件的
+[action_隐形]
+text:⚠隐形中⚠
+buildSpeed:0s
+displayType:infoOnlyNoBox
+isLocked:true
+isLockedMessage:[单位隐形中]
+description:敌人无法攻击，甚至都看不到
+convertTo:${core.name}
+[decal_3d]
+onlyWhenSelectedByOwnPlayer:true

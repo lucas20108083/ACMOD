@@ -1,0 +1,43 @@
+[core]
+name:遗传信息转化体
+displayDescription:-当你的遗传信息不够\n-可以使用这个奸商花圈将你的资金直接融入这个生物内\n-随后遗传信息将会出现\n"圆球状生物极端至极"
+maxHp:2500
+isBuilding:true
+mass:19088
+price:1200,DNA=200
+tags:肿瘤建筑
+radius:45
+buildSpeed:25s
+footprint:-2,-2,2,2
+constructionFootprint:-2,-2,2,3
+[graphics]
+image:花圈1
+image_wreak:花圈2
+image_shadow:AUTO
+shadowOffsetX:3
+shadowOffsetY:3
+animation_idle_scale_start: 0.9
+animation_idle_scale_end: 1
+animation_idle_speed: 20
+animation_idle_pingPong: true
+[attack]
+canAttack:false
+[movement]
+movementType:BUILDING
+[ai]
+buildPriority:1
+noneInBaseExtraPriority:1
+noneGlobalExtraPriority:1
+maxEachBase:2
+maxGlobal:2
+[action_兑换资金1]
+price:100
+text:转化
+description:将原版资金转化为遗传信息
+addResources:DNA=50
+ai_isHighPriority:if self.resource('DNA') < 200
+buildSpeed:0.2s
+canPlayerCancel:false
+displayType:action
+allowMultipleInQueue:false
+alwaysSinglePress:true

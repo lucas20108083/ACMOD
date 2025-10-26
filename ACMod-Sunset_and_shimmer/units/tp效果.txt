@@ -1,0 +1,87 @@
+[effect_blinkFlash]
+priority:high
+image: SHARED:light_50.png
+life: 78
+fadeOut: true
+attachedToUnit: false
+color: #07eef2
+scaleFrom: 3.8
+scaleTo: 1.0
+alpha: 0.8
+drawUnderUnits:false
+[effect_blinkGlow]
+priority:high
+image: SHARED:light_50.png
+life: 148
+fadeOut: true
+attachedToUnit: false
+color: #07eef2
+scaleFrom: 2.8
+scaleTo: 5.0
+alpha: 0.5
+drawUnderUnits:false
+[effect_blinkChargeIn_displacement]
+drawType: displacement
+image: SHARED:cone_inverted_normal_128.png
+life: 23
+fadeOut: true
+fadeInTime: 20
+attachedToUnit: true
+color: #FFFFFF
+scaleFrom: 1.5
+scaleTo: 1.0
+alpha: 1.0
+drawUnderUnits:false
+alwayStartDirAtZero: true
+[effect_blinkChargeOut_displacement]
+drawType: displacement
+image: SHARED:shockwave_normal_128.png
+life: 80
+fadeOut: true
+fadeInTime: 5
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1.0
+scaleTo: 4.0
+alpha: 0.3
+drawUnderUnits:false
+alwayStartDirAtZero: true
+[effect_blinkEnter_displacement]
+drawType: displacement
+image: SHARED:shockwave_normal_128.png
+life: 40
+fadeOut: true
+fadeInTime: 20
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1.3
+scaleTo: 0.5
+alpha: 0.7
+drawUnderUnits:false
+alwayStartDirAtZero: true
+[effect_blinkSpark]
+priority:high
+image: SHARED:light_50.png
+life: 18
+lifeRandom:5
+fadeOut: true
+attachedToUnit: false
+color: #07eef2
+scaleFrom: 0.2
+scaleTo: 0.5
+alpha: 0.8
+drawUnderUnits:false
+xOffsetRelativeRandom:30
+yOffsetRelativeRandom:30
+xSpeedAbsoluteRandom:1.4
+ySpeedAbsoluteRandom:1.4
+delayedStartTimer:30
+delayedStartTimerRandom:30
+physics:true
+physicsGravity:-0.4
+[animation_blink]
+effect_0.1s: {x:0, y:0, name:CUSTOM|blinkSpark*3}
+effect_0.5s: {x:0, y:0, name:CUSTOM|blinkSpark*5}
+effect_1.0s: {x:0, y:0, name:CUSTOM|blinkSpark*10}
+effect_1.05s: {x:0, y:0, name:CUSTOM|blinkChargeIn_displacement}
+effect_1.5s: {x:0, y:0, name:CUSTOM|blinkSpark*16}

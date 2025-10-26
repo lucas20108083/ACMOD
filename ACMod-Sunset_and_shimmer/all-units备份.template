@@ -1,0 +1,21 @@
+[core]
+[global_resource_DNA]
+hidden: false
+displayName: 遗传信息
+displayNameShort: DNA
+displayColor: #ff0000
+[global_resource_RD]
+hidden: false
+displayName: 研发资金
+displayNameShort: RD
+displayColor: #FF00A1
+[global_resource_MAC]
+hidden: false
+displayName: 制造资金
+displayNameShort: MAC
+displayColor: #F7FF00
+[global_resource_MRF]
+hidden: false
+displayName: 招募资金
+displayNameShort: MRF
+displayColor: #00FAFF

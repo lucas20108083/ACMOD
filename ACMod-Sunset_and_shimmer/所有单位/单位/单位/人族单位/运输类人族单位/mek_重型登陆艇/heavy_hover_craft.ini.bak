@@ -1,0 +1,58 @@
+[core]
+name: mEkHeavyHoverCraft
+displayText: 重型登陆艇
+displayDescription: -运输艇\n-可运载5个单位\n-慢速度\n-不能攻击
+class: CustomUnitMetadata
+price: 900
+maxHp: 600
+mass: 12000
+techLevel: 2
+buildSpeed: 30s
+radius: 15
+isBio: false
+softCollisionOnAll: 0
+maxTransportingUnits: 5
+[graphics]
+total_frames: 1
+image:        heavy_hover_craft.png
+image_wreak:  NONE
+image_turret: NONE
+image_shadow: AUTO
+shadowOffsetX:1
+shadowOffsetY:1
+splastEffect: true
+movementEffect: CUSTOM:EkHoverwash
+movementEffectRate: 6
+teamColorsOnTurret: true
+[attack]
+canAttack: false
+[effect_EkHoverwash]
+image: rotorwash.png
+createWhenOverLand: false
+life: 30
+spawnChance: 1
+fadeOut: true
+attachedToUnit: false
+fadeInTime:2
+scaleFrom: 0.25
+scaleTo: 1.25
+alpha: 0.5
+drawUnderUnits:true
+hOffset: -2
+dirOffsetRandom: 180
+dirSpeedRandom: 0.6
+atmospheric: true
+[movement]
+movementType: HOVER
+moveSpeed: 0.60
+moveAccelerationSpeed: 0.025
+moveDecelerationSpeed: 0.04
+reverseSpeedPercentage:0
+maxTurnSpeed: 1.0
+turnAcceleration: 0.2
+moveSlidingMode :true
+moveIgnoringBody:true
+moveSlidingDir:  10
+slowDeathFall: true
+targetHeight: 3
+targetHeightDrift: 1.5

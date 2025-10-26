@@ -1,0 +1,21 @@
+[canBuild_1]
+name:boat1,boat2,boat3,boat4,boat5
+pos:1
+isVisible:if ${core.techLevel} > 0 and self.resource('visibleT1') > 0
+[canBuild_radar]
+name:boat6
+pos:2
+isVisible:if ${core.techLevel} > 1 and self.resource('visibleT2') > 0 and self.resource(type="研发隐形1",equalTo=1)
+
+[canBuild_3]
+name:tank
+pos:3
+isVisible:if ${core.techLevel} > 2 and self.resource('visibleT3') > 0
+
+[resource_visibleT1]
+hidden:true
+[resource_visibleT2]
+hidden:true
+[resource_visibleT3]
+hidden:true
+#这里的局部资源不要转移到全局模板

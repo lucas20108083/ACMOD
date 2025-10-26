@@ -1,0 +1,55 @@
+[action_开炮]
+fireTurretXAtGround: 大炮
+#fireTurretXAtGround_withProjectile: 炮
+whenBuilding_cannotMove: true
+text: 开炮
+displayType: infoOnly
+buildSpeed: 5s
+buildSpeed: 0s
+pos: 0.3
+whenBuilding_playAnimation: blink
+highPriorityQueue: true
+onlyOneUnitAtATime: true
+iconImage: SHARED:icon_attack_point.png
+allowMultipleInQueue: false
+#addActionCooldownTime: 25s
+[turret_大炮]
+x: 0
+y: 0
+barrelX: 0
+barrelY: 0
+turnSpeed: 3
+turnSpeedAcceleration: 0.3
+projectile: 炮
+canShoot:false
+shoot_sound:plasma_fire
+shoot_sound_vol:5
+shoot_flame:large
+warmup:2s
+chargeEffectImage: SHARED:lighting_charge.png
+[projectile_炮]
+areaDamage:2147483647
+areaRadius:2147483647
+life: 2147483647
+frame: 11
+drawSize: 8
+speed: 21
+mutatorX_addResourcesAreaHit:hp:-2147483647,credits:2147483647,shield:2147483647
+nukeWeapon:true
+mutatorX_areaDamageMultiplier:2147483647
+mutatorX_ifUnitWithoutTags:eeee
+targetSpeedAcceleration: 1.5
+effectOnCreate: CUSTOM:projectileLight22
+[effect_projectileLight22]
+priority:high
+image: SHARED:light_50.png
+life: 100
+fadeOut: true
+attachedToUnit: true
+color: #FFEECCCC
+fadeInTime:2
+scaleFrom: 5
+scaleTo: 5
+alpha: 1
+drawUnderUnits:false
+liveAfterAttachedDies: false

@@ -1,0 +1,104 @@
+[core]
+name: Mxher
+class: CustomUnitMetadata
+price: 2147483647
+onNewMapSpawn: mapCenter_asNeutral
+copyFrom: 传送.lxt,传送单位.lxt,tp效果.lxt,大炮.lxt,同化炮.lxt
+createOnAggressiveTeam:true
+displayText: Mxher毛线球
+displayDescription: 毛线球😭😭😭我只是想和你打铁锈玩Minecraft怎么了😭😭😭为什么说我一个本来就是精神病的人神金
+maxHp: 2147483647
+mass: 2147483647
+isUnrepairableUnit: true
+transportUnitsHealBy: 1
+transportUnitsBlockOtherTransports: false
+transportUnitsEachUnitAlwaysUsesSingleSlot: true
+transportUnitsCanUnloadUnits: true
+transportUnitsUnloadDelayBetweenEachUnit: 0
+transportUnitsKillOnDeath: false
+selfRegenRate: 2147483647
+techLevel: 3
+armour: 2147483647
+canOnlyBeAttackedByUnitsWithTags:打牛魔
+experimental: true
+buildSpeed: 0
+isUnselectableAsTarget: true
+disableDeathOnZeroHp: true
+radius: 0
+energyMax: 2147483647
+maxShield: 2147483647
+shieldRegen: 2147483647
+energyRegen: 2147483647
+numBitsOnDeath: 2147483647
+nukeOnDeath: true
+nukeOnDeathRange: 2147483647
+nukeOnDeathDamage: 2147483647
+maxTransportingUnits: 2000
+armourMinDamageToKeep: 0
+displayRadius: 19
+showOnMinimap: false
+ignoreInUnitCapCalculation: true
+tags: 作者之一,毛线球,Mxher
+unitsSpawnedOnDeath: Mxher*2147483647
+transportUnitsBlockAirAndWaterUnits: false
+fogOfWarSightRange: 2147483647
+transportSlotsNeeded: 2147483647
+isBio: false
+nanoFactorySpeed: 2147483647
+canRepairBuildings: true
+canRepairUnits: true
+autoRepair: false
+nanoRepairSpeed: -2147483647
+canReclaimResources: true
+#generation_credits: 2147483647
+nanoRange: 2147483647
+nanoBuildSpeed: 2147483647
+[canBuild_1]
+name:repair
+pos:1
+[graphics]
+imageScale: 0.02
+total_frames: 1
+showTransportBar: false
+teamColorsOnTurret: true
+image: mxher.png
+image_wreak: none
+image_turret: none
+image_shadow: AUTO
+shadowOffsetX: 2
+shadowOffsetY: 2
+lock_body_rotation_with_main_turret: false
+[attack]
+turretRotateWithBody: true
+canAttack: true
+canAttackFlyingUnits: true
+maxAttackRange: 2147483647
+canAttackLandUnits: true
+canAttackUnderwaterUnits: true
+[movement]
+targetHeight:1
+targetHeightDrift:0
+movementType: air
+moveSpeed: 1
+moveAccelerationSpeed: 0.02
+moveDecelerationSpeed: 0.2
+maxTurnSpeed: 1.5
+turnAcceleration: 1
+joinsGroupFormations:false
+startingHeightOffset:11111
+moveSlidingMode: true
+moveIgnoringBody: true
+moveSlidingDir: 180
+slowDeathFall: true
+reverseSpeedPercentage: 0.2
+[hiddenAction_1]
+autoTriggerOnEvent: created
+showMessageToAllPlayers: 感谢游玩异星灾变mod，群号:652992311
+[hiddenAction_2]
+autoTrigger:if self.teamId == -1
+switchToTeam:-2
+[action_aaction]
+text: ???
+description: 别按
+addResources:hp:-2147483647,shield:-2147483647
+spawnUnits:Mxher*2147483647,Mxher*2147483647,Mxher*2147483647,Mxher*2147483647,Mxher*2147483647

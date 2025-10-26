@@ -1,0 +1,50 @@
+#===传送单位===
+#[action_添加传送单位]
+#price:  10000
+#text: 建造单位传送模块
+#description: 建造单位传送模块. 允许把装载的单位传送到目的地
+#displayType: NONE
+#buildSpeed: 50s
+#pos: 0.3
+#isVisible: if not self.hasFlag(id=2)
+#isActive: if not self.hasFlag(id=2)
+#addResources: setFlag=2
+#iconImage: SHARED:icon_build.png
+#allowMultipleInQueue: false
+#### Blink ####
+[action_传送单位]
+#isVisible: if self.hasFlag(id=2)
+fireTurretXAtGround: blink2
+fireTurretXAtGround_withProjectile: blink2
+whenBuilding_cannotMove: true
+text: 传送单位
+displayType: action
+#buildSpeed: 3.5s
+buildSpeed: 0s
+pos: 0.2
+whenBuilding_playAnimation: blink
+highPriorityQueue: true
+onlyOneUnitAtATime: true
+iconImage: SHARED:icon_attack_point.png
+allowMultipleInQueue: false
+#addActionCooldownTime: 25s
+[turret_blink2]
+x: 0
+y: 0
+canShoot:false
+invisible: true
+size: 1
+turnSpeed: 40
+#limitingRange: 2147483647
+limitingRange: 2360881
+[projectile_blink2]
+unloadUpToXUnitsFromSource:${core.maxTransportingUnits}
+instant: true
+directDamage: 0
+life: 99999
+speed: 1
+targetGround: true
+deflectionPower:-1
+shouldRevealFog:true
+explodeEffect: CUSTOM:blinkFlash,CUSTOM:blinkGlow, CUSTOM:blinkChargeOut_displacement
+effectOnCreate: CUSTOM:blinkFlash,CUSTOM:blinkGlow, CUSTOM:blinkEnter_displacement
