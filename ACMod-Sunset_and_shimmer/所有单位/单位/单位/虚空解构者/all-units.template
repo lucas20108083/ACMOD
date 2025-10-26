@@ -14,7 +14,10 @@ buildSpeed:0s
 text:单位被孢子武器攻击
 isLocked:true
 isGuiBlinking:true
-iconImage:ROOT:ui/spore.png
+iconImage: ${graphics.iamge}
+iconExtraImage: ROOT:ui/spore.png
+iconExtraIsVisible: true
+iconExtraColor: #FFFFFF
 description:单位已被孢子武器攻击!\n每过一段时间会造成百分比伤害，直到死亡!无法治疗\n无差别攻击生物和机械!
 isVisible:if self.resource('spore') > 0
 [effect_sporee]
