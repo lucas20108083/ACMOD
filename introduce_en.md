@@ -79,6 +79,3 @@ According to the GPLv3 requirements:
 
 ### Additional Notes
 Original content within the mod not derived from OpenHV is copyright of their respective creators. Using this mod indicates that you have read and agree to comply with all terms of the GPLv3 license.
-
-
-*Last updated: $(date +%Y-%m-%d)*
