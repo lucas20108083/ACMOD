@@ -9,6 +9,7 @@ import time
 import re
 import threading
 import platform
+import subprocess
 try:
     from win10toast import ToastNotifier
     _win_notifier = ToastNotifier()
@@ -42,6 +43,9 @@ class PackageToolGUI:
         self.move_to_mods_var = tk.BooleanVar(value=True)
         self.rw_mods_path_var = tk.StringVar()
         self.progress_var = tk.StringVar(value="准备就绪")
+        # 关闭并重启选项：勾选则在构建前关闭游戏并记录 exe 路径，构建完成后尝试重启
+        self.close_and_restart_var = tk.BooleanVar(value=False)
+        self.killed_rw_exe = None
         
         self.create_widgets()
         self.auto_detect_version()
@@ -142,6 +146,10 @@ class PackageToolGUI:
         self.build_btn = ttk.Button(bottom_frame, text="开始构建", 
                                   command=self.start_build_thread)
         self.build_btn.grid(row=0, column=1, padx=(10, 0))
+        # 在开始构建按钮下增加关闭进程的 CheckBox（用户勾选后在构建前关闭游戏并在构建后重启）
+        self.close_chk = ttk.Checkbutton(bottom_frame, text="关闭进程",
+                                         variable=self.close_and_restart_var)
+        self.close_chk.grid(row=1, column=1, sticky=tk.W, pady=(6, 0))
         
     def toggle_move_options(self):
         """切换快速移动选项的状态"""
@@ -227,14 +235,49 @@ class PackageToolGUI:
         
     def kill_rw_process(self):
         """结束铁锈战争进程"""
+        # 保留兼容方法：只结束进程并返回是否找到并结束过
+        found = False
+        target_names = ['Rusted Warfare - 64.exe', 'Rusted Warfare.exe', 'RustedWarfare.exe']
         for proc in psutil.process_iter(['pid', 'name']):
-            if proc.info['name'] == 'RustedWarfare.exe':
-                self.log_message("🛑 检测到铁锈战争正在运行，正在结束进程...")
-                proc.kill()
-                time.sleep(1)
-                self.log_message("✅ 铁锈战争进程已结束")
-                return True
-        return False
+            try:
+                name = proc.info.get('name')
+                if name in target_names:
+                    self.log_message("🛑 检测到铁锈战争正在运行，正在结束进程...")
+                    proc.kill()
+                    time.sleep(1)
+                    self.log_message("✅ 铁锈战争进程已结束")
+                    found = True
+            except Exception:
+                continue
+        return found
+
+    def find_and_kill_rw_process(self):
+        """查找并结束 Rusted Warfare 进程，返回可执行文件路径（若找到）"""
+        target_names = ['Rusted Warfare - 64.exe', 'Rusted Warfare.exe', 'RustedWarfare.exe']
+        exe_path = None
+        for proc in psutil.process_iter(['pid', 'name', 'exe']):
+            try:
+                name = proc.info.get('name')
+                if name in target_names:
+                    # 尝试获取 exe 路径
+                    try:
+                        exe_path = proc.exe()
+                    except Exception:
+                        exe_path = proc.info.get('exe')
+                    self.log_message("🛑 检测到铁锈战争正在运行，正在结束进程...")
+                    try:
+                        proc.kill()
+                    except Exception as e:
+                        self.log_message(f"⚠️ 无法结束进程: {e}")
+                    time.sleep(1)
+                    self.log_message("✅ 铁锈战争进程已结束")
+                    # 如果有多个实例，仍记录第一个可用 exe 路径
+                    if exe_path:
+                        return exe_path
+            except Exception:
+                # 忽略无法访问的进程信息
+                continue
+        return exe_path
         
     def save_version(self, version):
         """保存版本号到ver.txt"""
@@ -280,6 +323,15 @@ class PackageToolGUI:
             
             # 保存版本号
             self.save_version(version)
+
+            # 如果用户勾选了关闭进程选项，先尝试关闭游戏并记录 exe 路径以便构建后重启
+            if self.close_and_restart_var.get():
+                try:
+                    self.killed_rw_exe = self.find_and_kill_rw_process()
+                    if self.killed_rw_exe:
+                        self.log_message(f"ℹ️ 记录到被关闭的游戏可执行文件: {self.killed_rw_exe}")
+                except Exception as e:
+                    self.log_message(f"⚠️ 尝试关闭游戏时出错: {e}")
             
             # 检查源文件夹是否存在
             if not os.path.exists(self.base_name):
@@ -350,6 +402,15 @@ class PackageToolGUI:
                 self.progress_var.set("构建完成")
                 # 使用系统通知（优先）或回退到弹窗
                 self.send_notification("成功", "Mod构建完成！")
+                # 如果记录了被关闭的游戏可执行文件，尝试在构建后重启游戏
+                if self.close_and_restart_var.get() and self.killed_rw_exe:
+                    try:
+                        exe = self.killed_rw_exe
+                        cwd = os.path.dirname(exe) if exe and os.path.dirname(exe) else None
+                        subprocess.Popen([exe], cwd=cwd)
+                        self.log_message(f"🚀 已尝试重启游戏: {exe}")
+                    except Exception as e:
+                        self.log_message(f"❌ 无法重启游戏: {e}")
                 
             except Exception as e:
                 self.log_message(f"❌ 打包过程中出现错误：{str(e)}")
