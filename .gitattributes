@@ -1,0 +1,4 @@
+*.ini linguist-language=INI
+
+/Build.py linguist-generated
+/Build_Cli.py linguist-generated
