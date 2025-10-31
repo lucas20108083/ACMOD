@@ -1,0 +1,12 @@
+
+[core]
+copyFrom:ROOT:all-units.template
+techLevel:1
+armour:0
+maxShield:0
+energyMax:0
+energyRegen:0
+shieldRegen:0
+soundOnMoveOrder:ROOT:/音效/未来军指挥官/移动至这里.wav
+soundOnAttackOrder:ROOT:/音效/未来军指挥官/攻击此处.wav
+dont_load:false

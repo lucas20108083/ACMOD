@@ -1,0 +1,36 @@
+#A
+[action_CorrodingText]
+buildSpeed:0s
+text:Units are corroding
+description:Units are corroding\nUnits will deal damage over time after being corroded\nWill gradually decay
+text_zh:单位被腐蚀
+description_zh:单位已被腐蚀\n单位腐蚀过后会造成一段时间的持续伤害\n会逐渐衰减
+
+isLocked:true
+isGuiBlinking:true
+isVisible:if self.resource('zxx') > 0
+
+#HA
+[hiddenAction_CorrodingDamage]
+@define coc=self.resource('zxx')
+autoTrigger:if self.resource('zxx') > 0
+setUnitStats:shieldRegen=- ${coc},selfRegenRate=- ${coc}
+addResources:zxx=-0.015
+
+[hiddenAction_CorrodingOvered]
+autoTrigger:if self.resource('zxx') == 0
+resetUnitStats:true
+
+[hiddenAction_CorrodingRemoved]
+autoTrigger:if self.resource('zxx') < 0
+resourceAmount_setValue:0
+resourceAmount:zxx
+
+[hiddenAction_CorrodingLimit]
+autoTrigger:if self.resource('zxx') >= 5
+resourceAmount_setValue:4.99
+resourceAmount:zxx
+
+#R
+[resource_zxx]
+hidden:true

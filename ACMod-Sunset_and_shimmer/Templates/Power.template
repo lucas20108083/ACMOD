@@ -1,0 +1,8 @@
+
+[global_resource_电]
+displayName:电力
+hidden:true
+displayNameShort:OperatingEnergy
+displayColor:#ffff00
+displayPostfixInHUD:能量
+iconImage: ROOT:电.png

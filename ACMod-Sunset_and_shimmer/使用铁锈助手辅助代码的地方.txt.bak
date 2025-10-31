@@ -1,7 +1,0 @@
-#if self.resource('MRF') < 200
-selfRegenRate:1837
-disableDeathOnZeroHp:true
-allowMultipleInQueue: false
-highPriorityQueue: true
-extraLagHidingInUI: true
-isAlsoViewableByAllies: true

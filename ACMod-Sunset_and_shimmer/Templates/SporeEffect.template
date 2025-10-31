@@ -1,0 +1,97 @@
+#HA
+[hiddenAction_SporeEffect]
+spawnEffects:sporeUnit1*5,sporeUnit2*10
+autoTrigger:if self.resource('spore') > 0
+
+[hiddenAction_SporeLimit]
+autoTrigger:if self.resource('spore') > 6000
+resourceAmount_setValue:6000
+resourceAmount:spore
+
+[hiddenAction_SporeDamage]
+autoTrigger:if self.resource('spore') > 0
+addResourcesWithLogic:spore:-1,hp:-memory.damage
+
+[hiddenAction_SporeDamageUpdate]
+autoTrigger:true
+setUnitMemory: damage=rnd(-15,${core.maxHp / 42})
+
+[hiddenAction_SporeKilled]
+autoTrigger:if self.resource('spore') > 0 and self.hp < 100
+addResources:hp:-100
+spawnUnits:SB_Spore*3(offsetRandomXY=200)
+
+#A
+[action_SporeText]
+buildSpeed:0s
+
+text:Units are attacked by spore weapons
+description:Units have been attacked by spore weapons!\nDeal percentage damage every time until death! Unhealable\nAttacks creatures and rusting machinery indiscriminately!
+
+text_zh:单位被孢子武器攻击
+description_zh:单位已被孢子武器攻击!\n每过一段时间会造成百分比伤害，直到死亡!无法治疗\n无差别攻击生物和腐蚀机械!
+
+isLocked:true
+isGuiBlinking:true
+iconImage: ROOT:ui/spore.png
+isVisible:if self.resource('spore') > 0
+
+#C
+[core]
+@memory damage:float
+defineUnitMemory: float damage
+
+#R
+[resource_spore]
+hidden:true
+
+#E
+[effect_sporeUnit1]
+priority:low
+image:ROOT:ui/spore.png
+#image:star.png
+life:200
+lifeRandom:200
+fadeOut:true
+attachedToUnit:false
+color:#ffffff
+scaleFrom:0.5
+scaleTo:0.75
+alpha:0.5
+drawUnderUnits:false
+xOffsetRelativeRandom:20
+yOffsetRelativeRandom:20
+xSpeedAbsoluteRandom:0.75
+ySpeedAbsoluteRandom:0.75
+delayedStartTimer:50
+delayedStartTimerRandom:50
+showInFog:true
+physics:true
+dirSpeed:2
+dirSpeedRandom: 3
+physicsGravity:-0.4
+
+[effect_sporeUnit2]
+priority:high
+image:ROOT:ui/spore.png
+#image:star.png
+life:50
+lifeRandom:20
+fadeOut:true
+attachedToUnit:true
+color:#ffffff
+scaleFrom:0.5
+scaleTo:0.75
+alpha:0.5
+drawUnderUnits:false
+xOffsetRelativeRandom:20
+yOffsetRelativeRandom:20
+xSpeedAbsoluteRandom:0.5
+ySpeedAbsoluteRandom:0.5
+delayedStartTimer:20
+delayedStartTimerRandom:20
+showInFog:true
+physics:true
+dirSpeed:2
+dirSpeedRandom: 3
+physicsGravity:-0.4

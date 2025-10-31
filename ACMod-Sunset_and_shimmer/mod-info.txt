@@ -5,5 +5,5 @@ description:--本模组音乐过于大声，请自行调低\n虚空阵营可以�
 minVersion:1.15p11
 thumbnail:mod-icon.png
 [music]
-sourceFolder:music/
+sourceFolder:BackgroundMusic/
 whenUsingUnitsFromThisMod_playExclusively:true
