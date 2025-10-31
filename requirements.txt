@@ -1,0 +1,2 @@
+psutil>=5.8.0
+win10toast>=0.9

@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
+import tkinter.font as tkfont
 import os
 import shutil
 import zipfile
@@ -7,6 +8,12 @@ import psutil
 import time
 import re
 import threading
+import platform
+try:
+    from win10toast import ToastNotifier
+    _win_notifier = ToastNotifier()
+except Exception:
+    _win_notifier = None
 
 class PackageToolGUI:
     def __init__(self, root):
@@ -43,8 +50,15 @@ class PackageToolGUI:
     def setup_styles(self):
         """设置样式"""
         style = ttk.Style()
-        style.configure("Title.TLabel", font=("Arial", 16, "bold"))
-        style.configure("Subtitle.TLabel", font=("Arial", 12, "bold"))
+        # 优先使用 JetBrains Mono 字体，如果未安装则使用默认字体
+        try:
+            available = tkfont.families()
+            preferred_font = 'JetBrains Mono' if 'JetBrains Mono' in available else 'Arial'
+        except Exception:
+            preferred_font = 'Arial'
+
+        style.configure("Title.TLabel", font=(preferred_font, 16, "bold"))
+        style.configure("Subtitle.TLabel", font=(preferred_font, 12, "bold"))
         style.configure("Success.TLabel", foreground="green")
         style.configure("Error.TLabel", foreground="red")
         
@@ -109,6 +123,13 @@ class PackageToolGUI:
         
         self.log_text = scrolledtext.ScrolledText(log_frame, height=15, width=80)
         self.log_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        # 如果 JetBrains Mono 可用则设置为日志字体，保证等宽显示
+        try:
+            available = tkfont.families()
+            if 'JetBrains Mono' in available:
+                self.log_text.configure(font=('JetBrains Mono', 10))
+        except Exception:
+            pass
         
         # 进度和按钮框架
         bottom_frame = ttk.Frame(self.main_frame)
@@ -135,6 +156,25 @@ class PackageToolGUI:
         self.log_text.insert(tk.END, message + "\n")
         self.log_text.see(tk.END)
         self.root.update_idletasks()
+
+    def send_notification(self, title, message, duration=5):
+        """尝试使用系统通知发送消息，缺失时回退到 messagebox"""
+        try:
+            if _win_notifier and platform.system() == 'Windows':
+                # win10toast 在后台线程显示通知
+                _win_notifier.show_toast(title, message, duration=duration, threaded=True)
+                self.log_message(f"🔔 已发送系统通知: {title} - {message}")
+                return
+        except Exception as e:
+            # 记录但回退到 messagebox
+            self.log_message(f"⚠️ 系统通知发送失败: {e}")
+
+        # 回退：使用普通弹窗
+        try:
+            messagebox.showinfo(title, message)
+        except Exception:
+            # 最后回退：记录日志
+            self.log_message(f"ℹ️ {title}: {message}")
         
     def clear_log(self):
         """清空日志"""
@@ -308,7 +348,8 @@ class PackageToolGUI:
                     self.log_message("🎉 构建完成！")
                     
                 self.progress_var.set("构建完成")
-                messagebox.showinfo("成功", "Mod构建完成！")
+                # 使用系统通知（优先）或回退到弹窗
+                self.send_notification("成功", "Mod构建完成！")
                 
             except Exception as e:
                 self.log_message(f"❌ 打包过程中出现错误：{str(e)}")
