@@ -19,7 +19,13 @@ physics:true
 atmospheric:true
 
 [effect_Blood2]
-copyFrom:Blood
+priority:veryhigh
+attachedToUnit: false
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:EffectImages/Blood.png
+physics:true
+atmospheric:true
 life: 195
 color: #8B0000
 scaleFrom:0.35
@@ -33,7 +39,13 @@ xSpeedRelativeRandom:0.8
 physicsGravity:0.35
 
 [effect_Blood3]
-copyFrom:Blood
+priority:veryhigh
+attachedToUnit: false
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:EffectImages/Blood.png
+physics:true
+atmospheric:true
 life: 125
 color: #DC143C
 scaleFrom:0.2
@@ -65,6 +77,7 @@ xSpeedRelativeRandom:5
 physicsGravity:0.8
 physics:true
 atmospheric:true
+
 [effect_BodyExp]
 priority:veryhigh
 life: 255
@@ -97,4 +110,4 @@ drawUnderUnits:false
 animateFrameSpeed:0.2
 animateFrameEnd:13
 animateFrameStart:0
-image:ROOT:EffectImahes/fire.png
+image:ROOT:EffectImages/fire.png

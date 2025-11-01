@@ -33,7 +33,7 @@ description_zh:单位已被孢子武器攻击!\n每过一段时间会造成百�
 
 isLocked:true
 isGuiBlinking:true
-iconImage: ROOT:ui/spore.png
+iconImage: ROOT:Icons/Effects/Spore.png
 isVisible:if self.resource('spore') > 0
 
 #C
@@ -48,7 +48,7 @@ hidden:true
 #E
 [effect_sporeUnit1]
 priority:low
-image:ROOT:ui/spore.png
+image:ROOT:Icons/Effects/Spore.png
 #image:star.png
 life:200
 lifeRandom:200
@@ -73,7 +73,7 @@ physicsGravity:-0.4
 
 [effect_sporeUnit2]
 priority:high
-image:ROOT:ui/spore.png
+image:ROOT:Icons/Effects/Spore.png
 #image:star.png
 life:50
 lifeRandom:20

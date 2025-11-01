@@ -1,0 +1,40 @@
+[turret_p1]
+canShoot: false
+x: 0
+y: 0
+idleDir:0
+invisible: true
+shoot_sound:nuke_launch
+shoot_sound_vol:0.27
+shoot_light:#FFEECCCC
+projectile:p1
+size: 1
+turnSpeed: 40
+#shoot_flame:custom:nukeLaunch_wave, custom:nukeLaunch_light
+limitingMinRange: 260
+[projectile_p1]
+tags: nuke
+directDamage: 123
+life: 99999
+speed: 0.1
+targetSpeed: 2.7
+targetSpeedAcceleration:0.02
+largeHitEffect: true
+ballistic: true
+ballistic_delaymove_height:80
+ballistic_height: 110
+image:nuke/1.png
+targetGround: true
+areaDamage: 5400
+areaHitAirAndLandAtSameTime: true
+alwaysVisibleInFog: true
+areaRadius: 250
+areaExpandTime:75
+deflectionPower:-1
+shouldRevealFog:true
+nukeWeapon:true
+lightColor: #FFEEEE00
+lightSize: 1
+friendlyFire: true
+shadowFrame:1
+trailEffect: true

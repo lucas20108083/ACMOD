@@ -1,0 +1,94 @@
+
+[decal_选中]
+layer:shadow
+image:ROOT:EffectImages/TumorSelected.png
+imageScale:${core.radius}*0.122222
+teamColors:true
+onlyWhenSelectedByAnyPlayer:true
+alwayStartDirAtZero:true
+alpha:0.45
+
+[projectile_heal]
+explodeEffect:none
+life:10
+areaDamage:20
+
+[placementRule_扩张]
+anyRuleInGroup: Annex
+searchTags:肿瘤建筑
+searchDistance:230
+#searchOffsetX:-80
+#searchOffsetY:-20
+minCount: 1
+cannotPlaceMessage: 你必须使用巢穴扩张才能在此制造肿瘤建筑
+ 
+[core]
+copyFrom:ROOT:all-units.template
+@memory damage:float
+defineUnitMemory: float damage
+tags:肿瘤建筑,无视孢子
+@memory 数量:number
+
+
+
+[hiddenAction_队伍中建筑量检测]
+autoTrigger:true
+setUnitMemory:数量=self.numberOfUnitsInTeam(withinRange=500, withTag='肿瘤建筑')
+
+[hiddenAction_回血]
+autoTrigger:if memory.数量>0 and self.maxHp>self.hp and numberOfUnitsInTeam(withTag='肿瘤') > 0
+setUnitStats:hp+=(self.maxHp*0.025)*memory.数量
+addResourcesWithLogic:credits:5.75*memory.数量,DNA:35*memory.数量
+
+[action_能力ui]
+text:群星增幅
+displayType:action
+description:-母巢在地下建立肉瘤根系对你的建筑进行超级回血\n-会随着建筑的增加而更快\n-还会增加你的建筑生产资源的数量\n当母巢被摧毁时失效
+pos:-12
+isVisible:if numberOfUnitsInTeam(withTag='肿瘤') > 0
+isActive:false
+spawnUnits:builder
+
+[action_能力ui2]
+text:群星增幅已失效
+displayType:action
+description:-母巢已被摧毁\n-群星增幅效果已消失
+pos:-12
+isVisible:if numberOfUnitsInTeam(withTag='肿瘤') < 1
+isActive:false
+spawnUnits:builder
+
+[decal_safeModeDecal]
+layer:onTop
+order:0
+onlyTeam:own
+onlyInPreview:true
+imageScale:1.23
+color:#000000
+alwaysStartDirAtZero:true
+#createWhenOffscreen:true
+image:SHADOW:${graphics.image}
+total_frames:${graphics.total_frames}
+isVisible:if self.Resource('safeMode') > 0
+alpha:0.93
+
+[decal_safeModeDecal2]
+layer:onTop
+order:0
+onlyTeam:own
+alwaysStartDirAtZero:true
+onlyInPreview:false
+imageScale:1.23
+color:#000000
+#createWhenOffscreen:true
+alpha:0.93
+image:SHADOW:${graphics.image}
+total_frames:${graphics.total_frames}
+isVisible:if self.Resource('safeMode') > 0
+
+
+[global_resource_safeMode]
+hidden:true
+
+[graphics]
+total_frames:1

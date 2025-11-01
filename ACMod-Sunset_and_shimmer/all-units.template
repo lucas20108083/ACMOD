@@ -1,6 +1,14 @@
 #C
 [core]
 copyFrom:Templates/Corroding.template,Templates/Power.template,Templates/SporeEffect.template,Templates/InfantryBlood.template
+displayText:${core.name}
+displayDescription: 
+techLevel:1
+armour:0
+maxShield:0
+energyMax:0
+energyRegen:0
+shieldRegen:0
 #GR
 [global_resource_BaseUnitDeadCount]
 hidden: true
@@ -12,34 +20,34 @@ displayColor: #000000
 hidden: false
 displayName: 虚空能量
 displayNameShort: 空能
-iconImage: ROOT:ui/资金图/VE.png
+iconImage: ROOT:Icons/Resources/VE.png
 displayColor: #0000FF
 
 [global_resource_DNA]
 hidden: false
 displayName: 基因肉坨
 displayNameShort: 核酸与血肉材料
-iconImage: ROOT:ui/资金图/DNA.png
+iconImage: ROOT:Icons/Resources/DNA.png
 displayColor: #ff0000
 
 [global_resource_RD]
 hidden: false
 displayName: 研发资金
-iconImage: ROOT:ui/资金图/RD.png
+iconImage: ROOT:Icons/Resources/RD.png
 displayNameShort: 科技资金
 displayColor: #FF00A1
 
 [global_resource_MAC]
 hidden: false
 displayName: 制造资金
-iconImage: ROOT:ui/资金图/MAC.png
+iconImage: ROOT:Icons/Resources/MAC.png
 displayNameShort: 生产资金
 displayColor: #F7FF00
 
 [global_resource_MRF]
 hidden: false
 displayName: 招募资金
-iconImage: ROOT:ui/资金图/MRF.png
+iconImage: ROOT:Icons/Resources/MRF.png
 displayNameShort: 招募资金
 displayColor: #00FAFF
 
@@ -84,7 +92,7 @@ displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 1
 isLockedMessage:[关于]
-iconExtraImage:ROOT:ui/T1.lng
+iconExtraImage:ROOT:Icons/Actions/T1.png
 convertTo:${core.name}
 [action_T2]
 text:[T2单位]
@@ -93,7 +101,7 @@ displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 2
 isLockedMessage:[关于]
-iconExtraImage:ROOT:ui/T2.lng
+iconExtraImage:ROOT:Icons/Actions/T2.png
 convertTo:${core.name}
 [action_T3]
 text:[T3单位]
@@ -102,5 +110,5 @@ displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 3
 isLockedMessage:[关于]
-iconExtraImage:ROOT:ui/T3.lng
+iconExtraImage:ROOT:Icons/Actions/T3.png
 convertTo:${core.name}

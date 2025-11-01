@@ -90,7 +90,7 @@ class PackageToolCLI:
     def ask_rw_mods_path(self):
         """询问铁锈战争Mod路径"""
         default_paths = [
-            r"D:\Program Files (x86)\Steam\steamapps\common\Rusted Warfare\mods\units",
+            r"/storage/emulated/0/rustedWarfare/units/",
             r"C:\Program Files (x86)\Steam\steamapps\common\Rusted Warfare\mods\units",
             r".\mods\units"  # 相对路径
         ]

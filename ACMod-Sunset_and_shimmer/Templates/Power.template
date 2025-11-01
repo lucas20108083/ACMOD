@@ -5,4 +5,4 @@ hidden:true
 displayNameShort:OperatingEnergy
 displayColor:#ffff00
 displayPostfixInHUD:能量
-iconImage: ROOT:电.png
+iconImage: ROOT:Icons/Power.png

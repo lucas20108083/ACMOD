@@ -1,0 +1,49 @@
+[action_兑换资金1]
+price:360
+text:兑换研发资金
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每360资金兑换50研发资金
+addResources:RD=50
+ai_isHighPriority:if  self.resource('RD') < 200
+buildSpeed:0.2s
+displayType:action
+[action_兑换资金2]
+price:560
+text:兑换制造资金
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每560资金兑换50制造资金
+addResources:MAC=50
+buildSpeed:0.2s
+ai_isHighPriority:if self.resource('MAC') < 200
+
+displayType:action
+[action_兑换资金3]
+price:500
+text:兑换招募资金
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每500资金兑换50招募资金
+addResources:MRF=250
+buildSpeed:0.2s
+ai_isHighPriority:if  self.resource('MRF') < 200
+displayType:action
+[action_兑换资金4]
+price:3600
+text:兑换研发资金*10
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每3600资金兑换500研发资金
+addResources:RD=500
+ai_isHighPriority:if self.resource('RD') < 1000
+buildSpeed:0.2s
+displayType:action
+[action_兑换资金5]
+price:2500
+text:兑换制造资金*10
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每2500资金兑换500研发资金
+addResources:MAC=500
+ai_isHighPriority:if self.resource('MAC') < 1000
+buildSpeed:0.2s
+displayType:action
+[action_兑换资金6]
+price:2900
+text:兑换招募资金*10
+description:从原版自带的资金内兑换出所需要的资金，\n价格:每2900资金兑换500招募资金
+addResources:MRF=500
+ai_isHighPriority:if self.resource('MRF') < 1000
+buildSpeed:0.2s
+displayType:action

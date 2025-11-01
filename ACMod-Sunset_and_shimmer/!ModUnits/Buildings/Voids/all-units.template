@@ -1,0 +1,66 @@
+
+[effect_爆1]
+priority:veryhigh
+total_frames:14
+life: 200
+attachedToUnit: false
+color: #0000FF
+scaleFrom:${core.radius/10}
+scaleTo:${core.radius/10}
+alpha: 1
+drawUnderUnits:false
+animateFrameSpeed:0.2
+animateFrameEnd:13
+animateFrameStart:0
+image:ROOT:EffectImages/fire.png
+[effect_爆2]
+priority:veryhigh
+total_frames:1
+life: 114
+fadeOut:true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom:0.5
+scaleTo:1
+image:base_dead.png
+alpha: 1
+drawUnderUnits:false
+[hiddenAction_爆]
+autoTriggerOnEvent:destroyed
+spawnEffects:爆1,爆2,Blood*50,Blood2*35,Blood3*38
+[effect_Blood]
+life: 200
+scaleFrom:${core.radius/100}
+scaleTo:${core.radius/100}
+[effect_Blood2]
+color: #0033FF
+scaleFrom:${core.radius/10}
+scaleTo:${core.radius/10}
+[effect_Blood3]
+color: #6660FF
+scaleFrom:${core.radius/100}
+scaleTo:${core.radius/100}
+
+[core]
+@memory damage:float
+defineUnitMemory: float damage
+copyFrom:ROOT:all-units.template
+techLevel:1
+armour:1000
+armourMinDamageToKeep:35
+maxShield:0
+energyMax:0
+energyRegen:0
+shieldRegen:0
+fogOfWarSightRange:5
+[graphics]
+image_wreak:none
+animation_idle_start: 0
+animation_idle_end: 0
+animation_idle_speed: 150
+animation_idle_scale_start:1
+animation_idle_scale_end:1.05
+animation_idle_pingPong: true
+
+
+
