@@ -96,7 +96,7 @@ reclaimEffect:CUSTOM:build514,s1*2,s2
 @memory damage:float
 defineUnitMemory: float damage
 tags:无视孢子
-copyFrom:ROOT:all-units.template
+copyFrom:ROOT:all-units.template,ROOT:Templates\InfantryBlood.template
 
 [hiddenAction_死亡播放]
 autoTriggerOnEvent:destroyed

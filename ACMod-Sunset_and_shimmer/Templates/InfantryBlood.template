@@ -1,5 +1,5 @@
 [effect_Blood]
-priority:veryhigh
+priority:low
 life: 200
 attachedToUnit: false
 color: #FF0000
@@ -17,9 +17,27 @@ xSpeedRelativeRandom:1.1
 physicsGravity:0.25
 physics:true
 atmospheric:true
-
+[effect_Blood1]
+priority:low
+life: 200
+attachedToUnit: false
+color: #FF0000
+scaleFrom:0.25
+scaleTo:0.25
+alpha: 0.5
+fadeOut:true
+drawUnderUnits:false
+image:ROOT:EffectImages/Blood.png
+dirSpeedRandom:2
+dirOffsetRandom:1
+hOffset:2
+ySpeedRelativeRandom:1.2
+xSpeedRelativeRandom:1.1
+physicsGravity:0.25
+physics:true
+atmospheric:true
 [effect_Blood2]
-priority:veryhigh
+priority:low
 attachedToUnit: false
 fadeOut:true
 drawUnderUnits:false
@@ -39,7 +57,7 @@ xSpeedRelativeRandom:0.8
 physicsGravity:0.35
 
 [effect_Blood3]
-priority:veryhigh
+priority:high
 attachedToUnit: false
 fadeOut:true
 drawUnderUnits:false
@@ -59,7 +77,7 @@ xSpeedRelativeRandom:1.5
 physicsGravity:0.2
 
 [effect_TurretExp]
-priority:veryhigh
+priority:high
 life: 200
 attachedToUnit: false
 color: #FFFFFF
@@ -79,7 +97,7 @@ physics:true
 atmospheric:true
 
 [effect_BodyExp]
-priority:veryhigh
+priority:high
 life: 255
 attachedToUnit: false
 color: #FFFFFF
@@ -98,7 +116,7 @@ physicsGravity:1.2
 physics:true
 atmospheric:true
 [effect_CExp]
-priority:veryhigh
+priority:high
 total_frames:14
 life: 200
 attachedToUnit: false

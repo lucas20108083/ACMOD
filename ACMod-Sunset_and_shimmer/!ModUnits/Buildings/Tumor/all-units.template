@@ -23,7 +23,7 @@ minCount: 1
 cannotPlaceMessage: 你必须使用巢穴扩张才能在此制造肿瘤建筑
  
 [core]
-copyFrom:ROOT:all-units.template
+copyFrom:ROOT:all-units.template,ROOT:Templates\InfantryBlood.template
 @memory damage:float
 defineUnitMemory: float damage
 tags:肿瘤建筑,无视孢子
