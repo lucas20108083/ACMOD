@@ -1,6 +1,6 @@
 #单位移动音效太逆天了，等我弄好音效再改
 [effect_s1]
-image: ROOT:特效贴图/虫族血雾.png
+image: ROOT:EffectImages/PoisonousFog.png
 life: 20
 fadeOut: true
 attachedToUnit: true
@@ -15,14 +15,14 @@ ySpeedRelative: 3
 #drawType:displacement
 [decal_选中]
 layer:shadow
-image:ROOT:特效贴图/肿瘤选中.png
+image:ROOT:EffectImages/TumorSelected.png
 imageScale:${core.radius}*0.0651
 onlyWhenSelectedByAnyPlayer:true
 teamColors:true
 alwayStartDirAtZero:true
 alpha:0.25
 [effect_s2]
-image: ROOT:特效贴图/虫族血雾.png
+image: ROOT:EffectImages/PoisonousFog.png
 life: 75
 fadeOut: true
 attachedToUnit: true
@@ -30,8 +30,6 @@ color: #FF3333
 fadeInTime: 4
 scaleFrom: 0.3
 scaleTo: 1.5
-alpha: 0.35
-drawUnderUnits: false
 ySpeedRelative: 4
 priority:high
 [effect_build114]
@@ -39,7 +37,7 @@ createWhenZoomedOut: false
 priority:low
 xOffsetRelativeRandom: 10
 yOffsetRelativeRandom: 16
-image: ROOT:特效贴图/毒雾.png
+image: ROOT:EffectImages/PoisonousFog.png
 life: 5
 drawType:displacement
 fadeOut: true
@@ -53,7 +51,7 @@ drawUnderUnits:true
 ySpeedRelative:5
 atmospheric: true
 [effect_build514]
-image: ROOT:特效贴图/孢子.png
+image: ROOT:EffectImages/Spore.png
 priority: low
 life:30
 lifeRandom:20
@@ -67,7 +65,7 @@ delayedStartTimerRandom:10
 hSpeed: 0.7
 hSpeedRandom: 0.4
 [effect_build191]
-image: ROOT:特效贴图/解构.png
+image: ROOT:EffectImages/Deconstruction.png
 priority: low
 life:30
 lifeRandom:20
