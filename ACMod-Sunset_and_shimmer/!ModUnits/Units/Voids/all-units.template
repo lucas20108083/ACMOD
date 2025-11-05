@@ -47,7 +47,7 @@ scaleTo:${core.radius/100}
 
 [action_细胞分裂]
 text: 分型复制
-allowMultipleInQueue
+allowMultipleInQueue:true
 ai_isHighPriority: if self.hp < ${core.maxHp} / 2
 addActionCooldownTime:50s
 buildSpeed: 20s
