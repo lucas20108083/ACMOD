@@ -37,7 +37,10 @@ class PackageToolGUI:
         
         # 初始化变量
         self.base_name = "ACMod-Sunset_and_shimmer"
-        self.mod_info_path = os.path.join(self.base_name, "mod-info.txt")
+        # 使用脚本文件所在目录作为基准路径，避免从其他工作目录运行时报找不到源文件
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.base_path = os.path.join(self.script_dir, self.base_name)
+        self.mod_info_path = os.path.join(self.base_path, "mod-info.txt")
         self.version_var = tk.StringVar()
         self.build_type_var = tk.StringVar(value="release")
         self.move_to_mods_var = tk.BooleanVar(value=True)
@@ -281,9 +284,14 @@ class PackageToolGUI:
         
     def save_version(self, version):
         """保存版本号到ver.txt"""
-        with open("ver.txt", "w") as f:
-            f.write(version)
-        self.log_message(f"📝 版本号 {version} 已保存到 ver.txt")
+        # 将 ver.txt 保存在脚本目录，保证从任意工作目录运行时位置一致
+        try:
+            ver_path = os.path.join(self.script_dir, "ver.txt")
+            with open(ver_path, "w", encoding='utf-8') as f:
+                f.write(version)
+            self.log_message(f"📝 版本号 {version} 已保存到 {ver_path}")
+        except Exception as e:
+            self.log_message(f"⚠️ 无法保存 ver.txt: {e}")
         
     def start_build_thread(self):
         """在新线程中开始构建"""
@@ -333,10 +341,10 @@ class PackageToolGUI:
                 except Exception as e:
                     self.log_message(f"⚠️ 尝试关闭游戏时出错: {e}")
             
-            # 检查源文件夹是否存在
-            if not os.path.exists(self.base_name):
-                self.log_message(f"❌ 错误: 源文件夹 {self.base_name} 不存在")
-                messagebox.showerror("错误", f"源文件夹 {self.base_name} 不存在")
+            # 检查源文件夹是否存在（使用脚本目录下的 base_path）
+            if not os.path.exists(self.base_path):
+                self.log_message(f"❌ 错误: 源文件夹 未找到: {self.base_path}")
+                messagebox.showerror("错误", f"源文件夹 未找到: {self.base_path}")
                 self.progress_var.set("准备就绪")
                 self.build_btn.configure(state="normal")
                 return
@@ -359,7 +367,8 @@ class PackageToolGUI:
                 file_count = 0
                 
                 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-                    source_dir = os.path.abspath(self.base_name)
+                    # 使用基于脚本目录的源文件夹路径，避免相对路径问题
+                    source_dir = os.path.abspath(self.base_path)
                     for root, _, files in os.walk(source_dir):
                         for file in files:
                             file_path = os.path.join(root, file)

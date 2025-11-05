@@ -8,7 +8,10 @@ import re
 class PackageToolCLI:
     def __init__(self):
         self.base_name = "ACMod-Sunset_and_shimmer"
-        self.mod_info_path = os.path.join(self.base_name, "mod-info.txt")
+        # 使用脚本目录作为基准，避免从其他工作目录运行时报找不到源文件
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.base_path = os.path.join(self.script_dir, self.base_name)
+        self.mod_info_path = os.path.join(self.base_path, "mod-info.txt")
         
     def get_version_from_mod_info(self):
         """从mod-info.txt文件中提取版本号"""
@@ -38,9 +41,13 @@ class PackageToolCLI:
     
     def save_version(self, version):
         """保存版本号到ver.txt"""
-        with open("ver.txt", "w") as f:
-            f.write(version)
-        print(f"版本号 {version} 已保存到 ver.txt")
+        try:
+            ver_path = os.path.join(self.script_dir, "ver.txt")
+            with open(ver_path, "w", encoding='utf-8') as f:
+                f.write(version)
+            print(f"版本号 {version} 已保存到 {ver_path}")
+        except Exception as e:
+            print(f"无法保存 ver.txt: {e}")
             
     def kill_rw_process(self):
         """结束铁锈战争进程"""
@@ -167,9 +174,9 @@ class PackageToolCLI:
         # 保存版本号
         self.save_version(version)
         
-        # 检查源文件夹是否存在
-        if not os.path.exists(self.base_name):
-            print(f"错误: 源文件夹 {self.base_name} 不存在")
+        # 检查源文件夹是否存在（使用脚本目录下的 base_path）
+        if not os.path.exists(self.base_path):
+            print(f"错误: 源文件夹 未找到: {self.base_path}")
             return False
 
         # 创建构建目录
@@ -189,7 +196,7 @@ class PackageToolCLI:
             print(f"\n正在打包 {self.base_name}...")
             file_count = 0
             with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-                source_dir = os.path.abspath(self.base_name)
+                source_dir = os.path.abspath(self.base_path)
                 for root, _, files in os.walk(source_dir):
                     for file in files:
                         file_path = os.path.join(root, file)
