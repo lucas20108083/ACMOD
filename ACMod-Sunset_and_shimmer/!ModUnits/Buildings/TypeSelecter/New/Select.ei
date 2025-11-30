@@ -20,7 +20,7 @@ buildSpeed:0s
 displayType:infoOnlyNoBox
 highPriorityQueue: true
 extraLagHidingInUI: true
-isLockedMessage: 
+isLockedMessage: 请等待预览时间结束
 
 #isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
 isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
@@ -64,7 +64,7 @@ isLocked:if not self.timeAlive(laterThanSeconds=5) and not self.isControlledByAI
 ai_isHighPriority:if self.timeAlive(laterThanSeconds=5)
 temporarilyRemoveTags:hfef,void
 temporarilyAddTags:tumor
-iconImage:Tunor.png
+iconImage:Tumor.png
 
 playAnimation:move
 allowMultipleInQueue:false
@@ -73,7 +73,7 @@ buildSpeed:0s
 displayType:infoOnlyNoBox
 highPriorityQueue: true
 extraLagHidingInUI: true
-isLockedMessage: 
+isLockedMessage: 请等待预览时间结束
 
 #isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
 isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
@@ -94,12 +94,79 @@ buildSpeed:0s
 isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='tumor')
 
 [hiddenAction_处理Tumor]
-autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1)
+autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1) 
 
 playAnimation:move
 buildSpeed:0s
 highPriorityQueue: true
 
-spawnUnits:bflare,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
+spawnUnits:TumorSpawner,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
 spawnEffects:选择效果2,G1,Spark*25,redw
 addResources:credits:1000,DNA:1000,setFlag=1
+
+#Void
+
+[action_预选Void]
+text: Void Deconstructor
+description:What kind of existence exists in the Shining Rift?\nOur scouts have been missing for 50 days...\n"The grand cause of occupying the universe starts here. \nIn the Void Rift, a huge cave that connects the universes\nThere was once a demon dynasty,\nOne of them slaughtered his entire race\nAnd staged a coup d'état that destroyed the entire cave\nForcibly transformed all the creatures in the cave into weapons. \nHe wants to merge all areas outside of the Void Rift with the Void Rift.\n'Nos veniam ex nihil, nihil omnia devorabit'\nThe actions of silicon-based troops in living buildings are unpredictable. \nWhat kind of experience will flying insects bring to war?\nShepherd, you faint king...."
+
+text_zh:虚空解构者
+description_zh:闪耀的裂隙中\n究竟有着什么样的存在?\n我们的侦察兵已经失联50天了...\n"占领宇宙的宏图大业，就先从这里开始吧。"\n在联通各个宇宙的巨大洞穴"虚空裂隙中"\n曾经有一个恶魔王朝，\n其中一人，屠杀了自己整个种族\n并发动了整个洞穴的政变\n强制将洞穴内所有生物大量改造为兵器。\n他想要将虚空裂隙外的其他地区全部与虚空裂隙融合\n'Nos veniam ex nihil, nihil omnia devorabit'\n活体建筑中出现的硅基兵种行动无法预测。\n飞行的虫群会给战争带来什么样的体验呢?\n牧羊人，你这个昏君....
+
+isLocked:if not self.timeAlive(laterThanSeconds=5) and not self.isControlledByAI
+ai_isHighPriority:if self.timeAlive(laterThanSeconds=5)
+temporarilyRemoveTags:hfef,tumor
+temporarilyAddTags:void
+iconImage:Void.png
+
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:infoOnlyNoBox
+highPriorityQueue: true
+extraLagHidingInUI: true
+isLockedMessage: 请等待预览时间结束
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
+
+[action_结果Void]
+text: Void Deconstructor
+description: Cannot change the selected faction
+text_zh:虚空解构者
+description_zh:无法更改已选择的阵营
+
+iconImage:Void.png
+isGuiBlinking:true  
+isLocked:true
+isLockedMessage: 
+displayType:infoOnlyNoBox
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='tumor')
+
+[hiddenAction_处理Void]
+autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1) 
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:VoidSpawner,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
+spawnEffects:选择效果2,G1,Spark*25,redw
+addResources:credits:1000,DNA:1000,setFlag=1
+
+
+[hiddenAction_Ai处理HFEF]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 1 and rnd(1, 9) <= 3 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: hfef
+temporarilyRemoveTags: tumor,void
+[hiddenAction_Ai处理Tumor]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 3 and rnd(1, 9) <= 6 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: tumor
+temporarilyRemoveTags: hfef,void
+[hiddenAction_Ai处理Void]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 6 and rnd(1, 9) <= 9 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: void
+temporarilyRemoveTags: hfef,tumor
