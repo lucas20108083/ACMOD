@@ -1,0 +1,105 @@
+
+#HFEF
+[action_预选HFEF]
+text:Human Future Expeditionary Force
+description:At the end of the day, what can humans with the highest technology do?\nAt the end of the earth, the alliance of all nations\nThe federation of wars\nExtreme mechanical technology, powerful soldier combat\nAfter all...
+
+text_zh:人类未来远征军
+description_zh:终焉之时，拥有至高科技的人类究竟能做什么呢?\n地球的末日时所有国家的联合\n战争的联邦\n极端的机械技术，强悍的兵连作战\n终究...
+
+isLocked:if not self.timeAlive(laterThanSeconds=5) and not self.isControlledByAI
+ai_isHighPriority:if self.timeAlive(laterThanSeconds=5)
+temporarilyRemoveTags:tumor,void
+temporarilyAddTags:hfef
+iconImage:HFEF.png
+
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:infoOnlyNoBox
+highPriorityQueue: true
+extraLagHidingInUI: true
+isLockedMessage: 
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
+
+[action_结果HFEF]
+text: Human Future Expeditionary Force
+description: Cannot change the selected faction
+text_zh:人类未来远征军
+description_zh:无法更改已选择的阵营
+
+iconImage:HFEF.png
+isGuiBlinking:true  
+isLocked:true
+isLockedMessage: 
+displayType:infoOnlyNoBox
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='hfef')
+
+[hiddenAction_处理HFEF]
+autoTrigger:if self.tags(includes='hfef') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1)
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:HFEFSpawner
+spawnEffects:选择效果1,G2,Spark*25,portal
+addResources:credits:1200,MAC:600,RD:600,MRF:600,setFlag=1
+
+#Tumor
+
+[action_预选Tumor]
+text: Bloodthirsty Sandstorm
+description:\n"I saw everything when I came into contact with leyline energy on Molten Mountain, and I am willing to absorb any leyline energy at any cost\nCreate all technology!" \nRepresentative of evil thoughts and drug addiction\nQuickly assemble swarms - and have the highest alloy technology\nFast expansion\n- The best choice for war
+
+text_zh:嗜血沙尘暴
+description_zh:\n"在我在熔浆山上接触地脉能源时，我便看到了一切，我愿意付出任何代价吸收任何地脉能源\n创造一切科技!"\n恶念和毒瘾的代表\n快速集结虫群-同时拥有至高的合金技术\n扩张速度快\n-战争的不二选择
+
+isLocked:if not self.timeAlive(laterThanSeconds=5) and not self.isControlledByAI
+ai_isHighPriority:if self.timeAlive(laterThanSeconds=5)
+temporarilyRemoveTags:hfef,void
+temporarilyAddTags:tumor
+iconImage:Tunor.png
+
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:infoOnlyNoBox
+highPriorityQueue: true
+extraLagHidingInUI: true
+isLockedMessage: 
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
+
+[action_结果Tumor]
+text: Human Future Expeditionary Force
+description: Cannot change the selected faction
+text_zh:人类未来远征军
+description_zh:无法更改已选择的阵营
+
+iconImage:Tumor.png
+isGuiBlinking:true  
+isLocked:true
+isLockedMessage: 
+displayType:infoOnlyNoBox
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='tumor')
+
+[hiddenAction_处理Tumor]
+autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1)
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:bflare,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
+spawnEffects:选择效果2,G1,Spark*25,redw
+addResources:credits:1000,DNA:1000,setFlag=1

@@ -14,6 +14,9 @@ canNotBeDamaged:true
 disableAllUnitCollisions:true
 showOnMinimap:false
 autoTriggerCooldownTime:0.1s
+
+displayText: flare
+displayDescription: flare
 [graphics]
 image:        SHARED:blank.png
 [attack]
