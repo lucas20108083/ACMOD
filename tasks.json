@@ -1,0 +1,111 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Get Version",
+            "type": "shell",
+            "command": "type",
+            "args": ["ver.txt"],
+            "group": "build",
+            "presentation": {
+                "reveal": "never",
+                "echo": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Deploy Debug",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Kill Game Process",
+                "Get Version",
+                "Build Debug",
+                "Deploy Mod"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Build and Deploy Release",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Kill Game Process",
+                "Get Version",
+                "Build Release",
+                "Deploy Mod"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Build Only Debug",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Get Version",
+                "Build Debug"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Build Only Release",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Get Version",
+                "Build Release"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Kill Game Process",
+            "type": "process",
+            "command": "taskkill",
+            "args": [
+                "/f",
+                "/im",
+                "Rusted Warfare - 64.exe"
+            ],
+            "presentation": {
+                "reveal": "silent",
+                "echo": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -CompressionLevel Optimal"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -CompressionLevel Optimal"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Deploy Mod",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Copy-Item -Path 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -Destination 'E:/Steam/steamapps/common/Rusted Warfare/units/mods/' -Force; Start-Process 'E:/Steam/steamapps/common/Rusted Warfare/Rusted Warfare - 64.exe'"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
