@@ -28,6 +28,15 @@
             "request": "launch",
             "preLaunchTask": "Build Only Release",
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Ini Check",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/ini_checker.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "Ini Check",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

@@ -31,13 +31,13 @@
     "[java]": {
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": false
+            "source.organizeImports": "never"
         }
     },
     "[csharp]": {
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": false
+            "source.organizeImports": "never"
         }
     },
     "[cpp]": {

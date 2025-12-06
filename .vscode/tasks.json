@@ -107,5 +107,18 @@
             },
             "problemMatcher": []
         }
+        ,
+        {
+            "label": "Ini Check",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "${workspaceFolder}\\ini_checker.py"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        }
     ]
 }
