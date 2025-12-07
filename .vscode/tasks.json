@@ -66,7 +66,11 @@
                 "reveal": "silent",
                 "echo": false
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "isBackground": false,
+            "options": {
+                "statusbar": "hidden"
+            }
         },
         {
             "label": "Build Debug",
@@ -74,7 +78,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -CompressionLevel Optimal"
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath \"Build/ACMod-Sunset_and_shimmer_$version`_Debug.zip\" -CompressionLevel Optimal; Rename-Item -Path \"Build/ACMod-Sunset_and_shimmer_$version`_Debug.zip\" -NewName \"ACMod-Sunset_and_shimmer_$version`_Debug.rwmod\""
             ],
             "presentation": {
                 "reveal": "always"
@@ -87,7 +91,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -CompressionLevel Optimal"
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Compress-Archive -Path 'ACMod-Sunset_and_shimmer/*' -DestinationPath \"Build/ACMod-Sunset_and_shimmer_$version`_Release.zip\" -CompressionLevel Optimal; Rename-Item -Path \"Build/ACMod-Sunset_and_shimmer_$version`_Release.zip\" -NewName \"ACMod-Sunset_and_shimmer_$version`_Release.rwmod\""
             ],
             "presentation": {
                 "reveal": "always"
@@ -100,7 +104,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Copy-Item -Path 'Build/ACMod-Sunset_and_shimmer_${version}_Debug.rwmod' -Destination 'E:/Steam/steamapps/common/Rusted Warfare/units/mods/' -Force; Start-Process 'E:/Steam/steamapps/common/Rusted Warfare/Rusted Warfare - 64.exe'"
+                "$version = Get-Content ver.txt -Raw; $version = $version.Trim(); Copy-Item -Path \"Build/ACMod-Sunset_and_shimmer_$version`_Debug.rwmod\" -Destination \"D:\\Program Files (x86)\\Steam\\steamapps\\common\\Rusted Warfare\\units\\mods\\\" -Force; Start-Process \"D:\\Program Files (x86)\\Steam\\steamapps\\common\\Rusted Warfare\\Rusted Warfare - 64.exe\""
             ],
             "presentation": {
                 "reveal": "always"
