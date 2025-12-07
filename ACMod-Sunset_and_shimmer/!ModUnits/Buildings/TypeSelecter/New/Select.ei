@@ -144,10 +144,10 @@ isLockedMessage:
 displayType:infoOnlyNoBox
 buildSpeed:0s
 #isVisible:if self.hasFlag(id=1)
-isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='tumor')
+isVisible:if self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI and self.tags(includes='void')
 
 [hiddenAction_处理Void]
-autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1) 
+autoTrigger:if self.tags(includes='void') and self.timeAlive(laterThanSeconds=16) and not self.hasFlag(id=1) 
 
 playAnimation:move
 buildSpeed:0s
