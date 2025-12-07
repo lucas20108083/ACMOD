@@ -153,8 +153,8 @@ playAnimation:move
 buildSpeed:0s
 highPriorityQueue: true
 
-spawnUnits:VoidSpawner,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
-spawnEffects:选择效果2,G1,Spark*25,redw
+spawnUnits:VoidSpawner,eflare(offsetX=80),eflare(offsetX=-80),eflare(offsetY=80),eflare(offsetY=-80)
+spawnEffects:选择效果3,G2,Spark*25,redw
 addResources:credits:1000,DNA:1000,setFlag=1
 
 
