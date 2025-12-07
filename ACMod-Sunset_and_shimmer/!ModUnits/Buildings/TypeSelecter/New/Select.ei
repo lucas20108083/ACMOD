@@ -1,4 +1,48 @@
 
+#RF
+[resource_randomPoint]
+hidden:true
+[action_随机阵营]
+text:Random Faction
+description:Randomly select a faction based on probability
+text_zh:随机阵营
+description_zh:根据概率随机选择一个阵营
+
+iconImage:base.png
+isLocked:if not self.timeAlive(laterThanSeconds=5) and not self.isControlledByAI and self.resource('randomPoint') >= 1
+buildSpeed:0s
+displayType:infoOnlyNoBox
+highPriorityQueue:true
+iconExtraImage: base.png
+isLockedMessage:请等待预览时间结束
+isVisible:if not self.timeAlive(laterThanSeconds=15) and not self.isControlledByAI
+addResources:randomPoint:1
+showMessageToPlayer: DEBUG: Added Resource!
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+
+[hiddenAction_随机HFEF]
+autoTrigger:if rnd(1, 3) == 1 and self.resource('randomPoint') >= 1
+showMessageToPlayer: DEBUG: Removed Resources! HFEF!
+temporarilyAddTags: hfef
+temporarilyRemoveTags: tumor,void
+addResources: randomPoint:-1
+
+[hiddenAction_随机Tumor]
+autoTrigger:if rnd(1, 3) == 2 and self.resource('randomPoint') >= 1
+showMessageToPlayer: DEBUG: Removed Resources! Tumor!
+temporarilyAddTags: tumor
+temporarilyRemoveTags: hfef,void
+addResources: randomPoint:-1
+
+[hiddenAction_随机Void]
+autoTrigger:if rnd(1, 3) == 3 and self.resource('randomPoint') >= 1
+showMessageToPlayer: DEBUG: Removed Resources! Void!
+temporarilyAddTags: void
+temporarilyRemoveTags: hfef,tumor
+addResources: randomPoint:-1
+
 #HFEF
 [action_预选HFEF]
 text:Human Future Expeditionary Force
@@ -170,3 +214,5 @@ temporarilyRemoveTags: hfef,void
 autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 6 and rnd(1, 9) <= 9 and not self.hasFlag(id=1) and self.timeAlive() > 5
 temporarilyAddTags: void
 temporarilyRemoveTags: hfef,tumor
+
+
