@@ -67,3 +67,12 @@ image_wreak:base_dead.png
 
 
 
+
+[decal_选中]
+layer:shadow
+image:ROOT:EffectImages/VoidSelected.png
+imageScale:${core.radius}*0.0495
+onlyWhenSelectedByAnyPlayer:true
+teamColors:false
+alwayStartDirAtZero:true
+alpha:0.45

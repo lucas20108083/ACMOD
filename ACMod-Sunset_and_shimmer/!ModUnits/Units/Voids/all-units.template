@@ -64,3 +64,13 @@ iconExtraImage:ROOT:Icons/Actions/Clone.png
 
 [graphics]
 image_wreak:none
+
+
+[decal_选中]
+layer:shadow
+image:ROOT:EffectImages/VoidSelected.png
+imageScale:${core.radius}*0.061
+onlyWhenSelectedByAnyPlayer:true
+teamColors:false
+alwayStartDirAtZero:true
+alpha:0.45
