@@ -1,4 +1,4 @@
-name: Auto Release Build
+name: RWAC packager
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
     paths:
       - 'Build/*.rwmod'
       - 'ver.txt'
-      - '.github/workflows/release.yml'
   workflow_dispatch:
 
 permissions:
@@ -19,62 +18,33 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Read version from ver.txt
+      - name: Get version
         id: version
         run: |
-          VERSION=$(cat ver.txt | tr -d '\n' | tr -d '\r')
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "Release version: ${VERSION}"
+          VERSION=$(cat ver.txt | tr -d '\n' | tr -d '\r' | xargs)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Release version: $VERSION"
 
-      - name: Find and delete existing release
+      - name: Delete old release
         run: |
-          RELEASE_TAG="v${{ steps.version.outputs.version }}"
-          
-          # Check if release exists
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            echo "Deleting existing release: $RELEASE_TAG"
-            gh release delete "$RELEASE_TAG" -y --confirm || true
-          else
-            echo "No existing release found for tag: $RELEASE_TAG"
+          TAG="v${{ steps.version.outputs.version }}"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release delete "$TAG" -y || true
+            git push origin ":refs/tags/$TAG" || true
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get release files
-        id: files
-        run: |
-          FILES=$(ls -1 Build/*.rwmod 2>/dev/null | head -1)
-          if [ -z "$FILES" ]; then
-            echo "No .rwmod files found in Build directory!"
-            exit 1
-          fi
-          echo "files=${FILES}" >> $GITHUB_OUTPUT
-          echo "Found file: ${FILES}"
+          GH_TOKEN: ${{ github.token }}
+        continue-on-error: true
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ steps.version.outputs.version }}
-          name: v${{ steps.version.outputs.version }}
-          body: |
-            自动发行版本 - Auto Release
-            
-            版本号 / Version: ${{ steps.version.outputs.version }}
-            
-            此版本已自动构建和发布。
-            This version has been automatically built and published.
-          files: Build/*.rwmod
-          draft: false
-          prerelease: false
-          fail_on_unmatched_files: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release completed
         run: |
-          echo "✅ Release v${{ steps.version.outputs.version }} published successfully!"
+          TAG="v${{ steps.version.outputs.version }}"
+          gh release create "$TAG" \
+            --title "ACMod Sunset and Shimmer ${{ steps.version.outputs.version }}" \
+            --notes "自动发行版本 - Auto Release" \
+            Build/*.rwmod
+        env:
+          GH_TOKEN: ${{ github.token }}

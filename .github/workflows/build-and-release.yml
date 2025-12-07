@@ -1,4 +1,4 @@
-name: Build and Release
+name: RWAC packager - Manual Build
 
 on:
   workflow_dispatch:
@@ -21,86 +21,55 @@ jobs:
     runs-on: windows-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if (Test-Path "requirements.txt") {
-            pip install -r requirements.txt
-          }
-
-      - name: Read version from ver.txt
+      - name: Get version
         id: version
         shell: powershell
         run: |
-          $version = Get-Content ver.txt -Raw
-          $version = $version.Trim()
-          echo "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-          Write-Output "Release version: $version"
+          $version = (Get-Content ver.txt).Trim()
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          Write-Output "Version: $version"
 
-      - name: Build mod (${{ github.event.inputs.build_type }})
+      - name: Build mod
         shell: powershell
         run: |
           $version = "${{ steps.version.outputs.version }}"
           $buildType = "${{ github.event.inputs.build_type }}"
           
-          # Create Build directory if not exists
           if (-not (Test-Path "Build")) {
-            New-Item -ItemType Directory -Path "Build" -Force
+            New-Item -ItemType Directory -Path "Build" -Force | Out-Null
           }
           
-          # Build and rename
           $zipFile = "Build/ACMod-Sunset_and_shimmer_${version}_${buildType}.zip"
           $rwmodFile = "Build/ACMod-Sunset_and_shimmer_${version}_${buildType}.rwmod"
           
+          Write-Output "Building $buildType..."
           Compress-Archive -Path "ACMod-Sunset_and_shimmer/*" -DestinationPath $zipFile -CompressionLevel Optimal -Force
           Rename-Item -Path $zipFile -NewName (Split-Path $rwmodFile -Leaf) -Force
           
-          Write-Output "✅ Build completed: $rwmodFile"
+          Write-Output "✅ Build completed: $(Split-Path $rwmodFile -Leaf)"
 
-      - name: Delete existing release
-        shell: bash
+      - name: Delete old release
         run: |
-          RELEASE_TAG="v${{ steps.version.outputs.version }}"
-          
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            echo "Deleting existing release: $RELEASE_TAG"
-            gh release delete "$RELEASE_TAG" -y --confirm || true
-          else
-            echo "No existing release found for tag: $RELEASE_TAG"
-          fi
+          $tag = "v${{ steps.version.outputs.version }}"
+          if (gh release view "$tag" > $null 2>&1) {
+            gh release delete "$tag" -y || $true
+            git push origin ":refs/tags/$tag" || $true
+          }
+        shell: powershell
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        continue-on-error: true
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ steps.version.outputs.version }}
-          name: ACMod Sunset and Shimmer v${{ steps.version.outputs.version }}
-          body: |
-            ## 自动发行版本 - Auto Release
-            
-            **构建类型 / Build Type**: ${{ github.event.inputs.build_type }}
-            **版本号 / Version**: ${{ steps.version.outputs.version }}
-            
-            此版本已自动构建和发布。
-            This version has been automatically built and published.
-            
-            构建时间 / Build Time: ${{ github.event.repository.updated_at }}
-          files: Build/*.rwmod
-          draft: false
-          prerelease: false
-          fail_on_unmatched_files: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release completed
         run: |
-          Write-Output "✅ Release v${{ steps.version.outputs.version }} published successfully!"
+          $tag = "v${{ steps.version.outputs.version }}"
+          gh release create "$tag" `
+            --title "ACMod Sunset and Shimmer ${{ steps.version.outputs.version }} (${{ github.event.inputs.build_type }})" `
+            --notes "自动发行版本 - Auto Release`n构建类型 / Build Type: ${{ github.event.inputs.build_type }}`n版本号 / Version: ${{ steps.version.outputs.version }}" `
+            Build/*.rwmod
+        shell: powershell
+        env:
+          GH_TOKEN: ${{ github.token }}
