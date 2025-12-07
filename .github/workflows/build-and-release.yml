@@ -12,6 +12,10 @@ on:
           - Debug
           - Release
 
+permissions:
+  contents: write
+  releases: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -62,18 +66,18 @@ jobs:
           Write-Output "✅ Build completed: $rwmodFile"
 
       - name: Delete existing release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
           RELEASE_TAG="v${{ steps.version.outputs.version }}"
           
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
             echo "Deleting existing release: $RELEASE_TAG"
-            gh release delete "$RELEASE_TAG" -y
+            gh release delete "$RELEASE_TAG" -y --confirm || true
           else
             echo "No existing release found for tag: $RELEASE_TAG"
           fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -93,6 +97,7 @@ jobs:
           files: Build/*.rwmod
           draft: false
           prerelease: false
+          fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
