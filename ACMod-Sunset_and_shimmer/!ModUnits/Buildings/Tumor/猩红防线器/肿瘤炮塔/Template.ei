@@ -14,8 +14,8 @@ constructionFootprint:-1,-1,1,1
 
 
 [graphics]
-image:ROOT:!ModUnits/Buildings/Tumor/猩红防线器/底座1.png
-image_wreak:ROOT:!ModUnits/Buildings/Tumor/猩红防线器/底座2.png
+image:ROOT:!ModUnits/Buildings/Tumor/猩红防线器/肿瘤炮塔/底座1.png
+image_wreak:ROOT:!ModUnits/Buildings/Tumor/猩红防线器/肿瘤炮塔/底座2.png
 image_shadow:AUTO
 shadowOffsetX:5
 shadowOffsetY:5
