@@ -24,7 +24,7 @@ animation_idle_scale_start:1.23
 animation_idle_scale_end:1.2
 animation_idle_pingPong:true
 turretImageScale:1.45
-
+scaleImagesTo:52
 [attack]
 canAttack:true
 canAttackFlyingUnits:true
