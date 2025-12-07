@@ -9,8 +9,8 @@ radius:15
 armour:250
 armourMinDamageToKeep:30
 isBuilding:true
-footprint:-1,-1,1,1
-constructionFootprint:-1,-1,1,1
+footprint:0,0,1,1
+constructionFootprint:0,0,1,1
 
 
 [graphics]
