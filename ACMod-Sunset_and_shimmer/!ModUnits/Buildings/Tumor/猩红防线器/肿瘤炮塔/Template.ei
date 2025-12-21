@@ -44,7 +44,8 @@ createWhenZoomedOut: false
 priority:low
 xOffsetRelativeRandom: 10
 yOffsetRelativeRandom: 30
-image: ROOT:EffectImages/BugsBloodMist.png
+image: NONE
+#ROOT:EffectImages/BugsBloodMist.png
 life: 15
 #drawType:displacement
 fadeOut: true

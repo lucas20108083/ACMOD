@@ -3,6 +3,7 @@
 copyFrom:Templates/Corroding.template,Templates/Power.template,Templates/SporeEffect.template,Templates/InfantryBlood.template
 displayText:${core.name}
 displayDescription: 
+displayDescription_zh:
 techLevel:1
 armour:0
 maxShield:0
@@ -10,6 +11,7 @@ energyMax:0
 energyRegen:0
 shieldRegen:0
 #GR
+
 [global_resource_BaseUnitDeadCount]
 hidden: true
 displayName: 
@@ -86,29 +88,38 @@ hidden: true
 
 #A
 [action_T1]
-text:[T1单位]
-description:-单位科技:T1\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+text:[T1 Unit]
+text_zh:[T1单位]
+description:-UnitTech: T1\n-UnitDescription:\n${core.displayDescription}\n-UnitStatus:\nHP:\n(%{self.hp} / ${core.maxHp})\nShield:\n(%{self.shield} / ${core.maxShield})\nEnergy:\n(%{self.energy} / ${core.energyMax})
+description_zh:-单位科技:T1\n-单位简介:\n${core.displayDescription_zh}\n-单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
 displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 1
-isLockedMessage:[关于]
+isLockedMessage: [About]
+isLockedMessage_zh:[关于]
 iconExtraImage:ROOT:Icons/Actions/T1.png
 convertTo:${core.name}
 [action_T2]
-text:[T2单位]
-description:-单位科技:T2\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+text:[T2 Unit]
+text_zh:[T2单位]
+description:-UnitTech: T2\n-UnitDescription:\n${core.displayDescription}\n-UnitStatus:\nHP:\n(%{self.hp} / ${core.maxHp})\nShield:\n(%{self.shield} / ${core.maxShield})\nEnergy:\n(%{self.energy} / ${core.energyMax})
+description_zh:-单位科技:T2\n-单位简介:\n${core.displayDescription_zh}\n-单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
 displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 2
-isLockedMessage:[关于]
+isLockedMessage: [About]
+isLockedMessage_zh:[关于]
 iconExtraImage:ROOT:Icons/Actions/T2.png
 convertTo:${core.name}
 [action_T3]
-text:[T3单位]
-description:-单位科技:T3\n单位简介:\n${core.displayDescription}\n单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
+text:[T3 Unit]
+text_zh:[T3单位]
+description:-UnitTech: T3\n-UnitDescription:\n${core.displayDescription}\n-UnitStatus:\nHP:\n(%{self.hp} / ${core.maxHp})\nShield:\n(%{self.shield} / ${core.maxShield})\nEnergy:\n(%{self.energy} / ${core.energyMax})
+description_zh:-单位科技:T3\n-单位简介:\n${core.displayDescription_zh}\n-单位状态:\n生命值:\n(%{self.hp} / ${core.maxHp})\n气盾:\n(%{self.shield} / ${core.maxShield})\n能量:\n(%{self.energy} / ${core.energyMax})
 displayType:infoOnlyNoBox
 isLocked:true
 isVisible:if ${core.techLevel} == 3
-isLockedMessage:[关于]
+isLockedMessage: [About]
+isLockedMessage_zh:[关于]
 iconExtraImage:ROOT:Icons/Actions/T3.png
 convertTo:${core.name}
