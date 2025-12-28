@@ -7,7 +7,7 @@ text:Random Faction
 description:Randomly select a faction based on probability
 text_zh:随机阵营
 description_zh:根据概率随机选择一个阵营
-
+ai_isDisabled: true
 iconImage:4.png
 isLocked:if self.timeAlive(laterThanSeconds=30) and not self.isControlledByAI
 buildSpeed:0s
@@ -161,7 +161,7 @@ description_zh:闪耀的裂隙中\n究竟有着什么样的存在?\n我们的侦
 isLocked:if self.isControlledByAI or self.tags(includes='void')
 isLockedMessage: [已选择该阵营]
 isGuiBlinking: if self.tags(includes='void')
-ai_isHighPriority:if self.timeAlive(laterThanSeconds=5)
+ai_isHighPriority:false
 temporarilyRemoveTags:hfef,tumor
 temporarilyAddTags:void
 iconImage:3.png
