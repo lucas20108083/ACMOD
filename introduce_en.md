@@ -1,94 +1,94 @@
-# **RWAC** - ***异星灾变***
+# **RWAC** - ***Alien Catastrophe***
 
-[]🔯 欢迎您游玩世上特效最垃圾的星际战争模组！
+[]🔯 Welcome to play the space warfare mod with the worst special effects in the world!
 
-[x] 这是一个难绷风格的星际战争模组！
+[x] This is a hilariously-styled space warfare mod!
 
-[x] 联机群：975203920
-
----
-
-**◼️ 三族之战....究竟哪方更加嗜血.. ◻️**
+[x] Multiplayer Group: 975203920
 
 ---
 
-## **声明**
+**◼️ The War of Three Races....Which side is more bloodthirsty.. ◻️**
 
-> 本模组基于开源游戏 ***OpenHV*** 的素材以及音乐构建。
+---
+
+## **Declaration**
+
+> This mod is built upon the materials and music from the open-source game ***OpenHV***.
 >
-> ==> [OpenHV 原始仓库](https://github.com/OpenHV/OpenHV) <==
+> ==> [OpenHV Original Repository](https://github.com/OpenHV/OpenHV) <==
 >
-> 主创是群星之争痴子，见到任何类似的单位都是正常的 🔯
+> The creator is obsessed with Stellaris, so seeing any similar units is normal 🔯
 >
-> **请注意：** 本模组不建议游玩 10P 以上的大地图 **（特指初始单位为运输机的大地图）**。
+> **Please Note:** This mod is not recommended for playing large maps with 10+ players **（specifically referring to large maps with transport aircraft as starting units）**.
 
 ---
 
-## **作者名单**
+## **Author Credits**
 
-**-- 鱼雷工作室 (Torpedo Studio) --**
+**-- Torpedo Studio --**
 
--   **模组主创及策划：** lucas20108083 (卢卡斯)
--   ~~没有自己的手机，用的是奶奶的手机，模组做的一坨屎的鱼雷工作室创建者~~ **洋葱 (yc big)**
--   *雾若杂夜ouo (WuroZayeOuo)*
--   (↑这个不是工作室人员)
+-   **Mod Creator and Planner:** lucas20108083 (Lucas)
+-   ~~Founder of Torpedo Studio who doesn't have their own phone and uses grandma's phone, and the mod is a pile of trash~~ **Onion (yc big)**
+-   *Fog Night Miscellaneous Night ouo (WuroZayeOuo)*
+-   (↑This is not a studio member)
 
 ---
 
-## **背景故事**
+## **Background Story**
 
 ```
 
-群虫入侵，虚空吞噬。
-天意如此，人族覆灭...
+Insect swarm invasion, void consumption.
+Thus fate ordained, humanity perished...
 
-在千年之后，人类科技极速发展
-竟从没发生过一次战争...
+A thousand years later, human technology advanced rapidly
+Yet not a single war had ever occurred...
 
-缺乏战争经验的人类，没有意识到两个颠覆性的侵略者正在到来...
+Humans lacking war experience were unaware that two devastating invaders were approaching...
 
-公元3020年4月8日，波多黎各气象观测站发现了大地中出现超自然的裂缝
-这些发着蓝光的龟裂竟有隐隐若现的眼睛正在盯着被观察的人类。
+April 8, 3020 AD, the Puerto Rico meteorological station discovered supernatural cracks in the earth
+These glowing blue fissures had eyes faintly visible, staring at the observed humans.
 
-与此同时，某国的卫星探测到一块不同寻常的"陨铁"从80光年外的坐标向太阳系突进而来。
-有人尝试去波多黎各探查那巨大的发光龟裂，却再也没有回来。
+At the same time, a certain nation's satellite detected an unusual "meteorite iron" advancing toward the solar system from coordinates 80 light-years away.
+Those who attempted to investigate the massive glowing fissure in Puerto Rico never returned.
 
-在一百年的历史间，人类渐渐忘却这奇怪裂隙与怪异的陨石，把它们当成一个玩笑。
-直到毁灭之日。来自虚空的恶魔撕开了虚空裂隙，那比月球还庞大之外星巨舰降临到大气层上方。
+Over a hundred years of history, humans gradually forgot about these strange cracks and peculiar meteorites, treating them as a joke.
+Until the day of destruction. Demons from the void tore open the void, and a massive alien warship larger than the moon descended above the atmosphere.
 
-全身冒蓝光的怪物，皮肤长满肿瘤的的巨型虫族不约而同的都对着太阳系虎视眈眈。
-祂们互相发起的战争，也极度危害到了人类。
+Glowing blue monsters, and giant insect swarms with skin covered in tumors unanimously gazed covetously at the solar system.
+Their mutual warfare also severely threatened humanity.
 
-在同时被两群敌军侵略的情况下，各国领导人紧急情况下想起了千年前的战争体系
-用现有的高端科技，紧急成立人类未来远征军（HFEF）立志夺回人类失去的土地
-将这两群外星生物毁灭在人类的财产，地球上。
+Under simultaneous invasion by two enemy forces, national leaders urgently recalled the ancient war systems from a thousand years ago
+Using cutting-edge technology, they urgently established the Human Future Expeditionary Force (HFEF), determined to reclaim lost human territory
+To eliminate these two groups of alien creatures on human property, Earth.
 
-这场战役，被称为落日。
+This battle was called the Sunset.
 
 ```
 
-~~我要玩逆转裁判😭😭~~
+~~I want to play Ace Attorney 😭😭~~
 
 ---
 
-## **许可证与版权声明**
+## **License and Copyright Notice**
 
-### 1. 整体协议
-本模组（RWAC - 异星灾变）作为一个整体，采用 **GNU General Public License v3.0（GPLv3）** 进行授权。
-- 您可以在本仓库的 [LICENSE](https://github.com/lucas20108083/ACMOD/blob/main/LICENSE) 文件中查看GPLv3协议的完整文本。
-- 根据GPLv3的要求，您有权自由使用、修改、分享本模组。但任何分发行为（包括修改后的版本）都必须：
-    - 保留原始版权声明。
-    - 采用相同的 GPLv3 协议开源。
-    - 明确注明修改情况。
+### 1. Overall Agreement
+This mod (RWAC - Alien Catastrophe) as a whole is licensed under the **GNU General Public License v3.0 (GPLv3)**.
+- You can view the complete text of the GPLv3 agreement in the [LICENSE](https://github.com/lucas20108083/ACMOD/blob/main/LICENSE) file in this repository.
+- Under the requirements of GPLv3, you have the right to freely use, modify, and share this mod. However, any distribution (including modified versions) must:
+    - Retain the original copyright notice.
+    - Adopt the same GPLv3 agreement for open source.
+    - Clearly indicate modifications made.
 
-### 2. 开源素材来源与致谢
-本模组包含了来自开源项目 **[OpenHV](https://github.com/OpenHV/OpenHV)** 的素材和音乐。OpenHV 项目的素材可能采用多种 Creative Commons 许可证，包括但不限于 **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0** 等。
-- **您在使用本模组时，也必须同时遵守 OpenHV 素材原有的许可证条款。**
-- 对于 **CC BY（署名）** 类型的素材，您必须按照原项目要求为 OpenHV 项目署名。
-- 对于 **CC BY-SA（署名-相同方式共享）** 类型的素材，任何包含这些素材的衍生作品也必须采用相同或兼容的许可证发布。
+### 2. Open Source Materials Sources and Acknowledgments
+This mod includes materials and music from the open-source project **[OpenHV](https://github.com/OpenHV/OpenHV)**. OpenHV project materials may adopt multiple Creative Commons licenses, including but not limited to **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0**, etc.
+- **You must also comply with the original license terms of OpenHV materials when using this mod.**
+- For materials of the **CC BY (Attribution)** type, you must attribute the OpenHV project as required by the original project.
+- For materials of the **CC BY-SA (Attribution-ShareAlike)** type, any derivative works containing these materials must also be released under the same or compatible license.
 
-### 3. 原创内容
-本模组中由“鱼雷工作室”成员（lucas20108083, yc big等）与非工作室人员(WuroZayeOuo等) 创作的、非来自 OpenHV 的原创内容，同样遵循 **GNU General Public License v3.0** 协议。
+### 3. Original Content
+Original content created by members of the "Torpedo Studio" (lucas20108083, yc big, etc.) and non-studio members (WuroZayeOuo, etc.) in this mod, which is not derived from OpenHV, likewise adheres to the **GNU General Public License v3.0** agreement.
 
-### 4. 重要提示
-使用本模组即表示您已阅读并同意遵守 **GPLv3** 协议及所包含的 OpenHV 素材的原始许可证（如 CC BY-SA 4.0 等）的全部条款。
+### 4. Important Notice
+Using this mod signifies that you have read and agree to comply with all terms of the **GPLv3** agreement and the original licenses of the included OpenHV materials (such as CC BY-SA 4.0, etc).
