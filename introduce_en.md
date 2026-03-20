@@ -28,9 +28,9 @@
 
 **-- Torpedo Studio --**
 
--   **Mod Creator and Planner:** lucas20108083 (Lucas)
--   ~~Founder of Torpedo Studio who doesn't have their own phone and uses grandma's phone, and the mod is a pile of trash~~ **Onion (yc big)**
--   *Fog Night Miscellaneous Night ouo (WuroZayeOuo)*
+-   **Mod Creator and Planner:** lucas20108083
+-   ~~Founder of Torpedo Studio who doesn't have their own phone and uses grandma's phone, and the mod is a pile of trash~~ **yc big**
+-   WuroZayeOuo*
 -   (↑This is not a studio member)
 
 ---
