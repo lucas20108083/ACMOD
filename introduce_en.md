@@ -1,81 +1,94 @@
-**RWAC** - ***AlienCatastrophe***
+# **RWAC** - ***异星灾变***
 
-[]🔯 Welcome to the interstellar war mod with the worst special effects in the world!
+[]🔯 欢迎您游玩世上特效最垃圾的星际战争模组！
 
-[x] This is a mod with a "hard-to-hold-back" (absurd/meme) style of interstellar warfare!
+[x] 这是一个难绷风格的星际战争模组！
 
-[x] Multiplayer *QQ* Group: 975203920
+[x] 联机群：975203920
 
-*◼️ The war of three races.... Which side is more bloodthirsty..◻️*
+---
 
-------------------------
+**◼️ 三族之战....究竟哪方更加嗜血.. ◻️**
 
-*Statement*:
-> This mod partially uses assets and music from the open-source game ***OpenHV***.
+---
 
-> ==>[Repository Link](https://github.com/OpenHV/OpenHV)<==
+## **声明**
 
-> The main creator is obsessed with StarCraft, so seeing any similar units is normal 🔯.
+> 本模组基于开源游戏 ***OpenHV*** 的素材以及音乐构建。
+>
+> ==> [OpenHV 原始仓库](https://github.com/OpenHV/OpenHV) <==
+>
+> 主创是群星之争痴子，见到任何类似的单位都是正常的 🔯
+>
+> **请注意：** 本模组不建议游玩 10P 以上的大地图 **（特指初始单位为运输机的大地图）**。
 
-> This mod cannot be played on large maps with more than 10 players **("Large maps" primarily referring to those where the initial unit is a transport unit)**.
+---
 
-**Author List:**
+## **作者名单**
 
--- Torpedo Studio --
+**-- 鱼雷工作室 (Torpedo Studio) --**
 
-Mod Lead & Planner: lucas20108083 (卢卡斯Lucas)
+-   **模组主创及策划：** lucas20108083 (卢卡斯)
+-   ~~没有自己的手机，用的是奶奶的手机，模组做的一坨屎的鱼雷工作室创建者~~ **洋葱 (yc big)**
+-   *雾若杂夜ouo (WuroZayeOuo)*
+-   (↑这个不是工作室人员)
 
-~~The creator of Torpedo Studio who has no phone of his own, uses his grandma's phone, and makes mods that are a pile of crap~~ yc big (洋葱YC)
+---
 
-Just A Human : Nature_9(自然N9)
+## **背景故事**
 
-------------------------
-
-```Description
-Swarm invasion, void consumption
-Heaven's will be done, humanity perishes...
-
-A thousand years later, human technology advanced rapidly,
-Yet not a single war had occurred...
-
-Lacking wartime experience, humanity failed to realize two devastating invaders were approaching...
-
-On April 8, 3020, the Puerto Rico weather observatory discovered supernatural fissures appearing in the earth.
-These glowing blue cracks had faintly visible eyes staring back at the observing humans.
-
-Meanwhile, a satellite from a certain country detected an unusual "meteorite" hurtling towards the solar system from a location 80 light-years away.
-Some attempted to investigate the massive glowing fissures in Puerto Rico but never returned.
-
-Over the next century, humanity gradually forgot about the strange fissures and the bizarre meteorite, dismissing them as jokes.
-Until the day of destruction. Demons from the void tore open rifts, and an alien warship larger than the Moon descended into the upper atmosphere.
-
-Monsters glowing blue all over, and giant Zerg-like creatures covered in tumors, simultaneously set their sights on the solar system.
-The war they waged against each other also posed a grave threat to humanity.
-
-Facing invasion from two enemy forces simultaneously, world leaders urgently recalled warfare systems from a thousand years past.
-Using existing advanced technology, they hastily formed the Human Future Expeditionary Force (HFEF), determined to reclaim humanity's lost territories
-and annihilate these two alien species on Earth, humanity's heritage.
-
-This campaign was called "Sunset".
 ```
 
-~~I want to play Ace Attorney 😭😭~~
+群虫入侵，虚空吞噬。
+天意如此，人族覆灭...
 
-## Copyright Notice
+在千年之后，人类科技极速发展
+竟从没发生过一次战争...
 
-### Open Source Asset Usage Statement
-This mod partially uses resources based on the open-source project **OpenHV**, following the **GNU General Public License v3.0**. All used open-source assets retain their original license requirements.
+缺乏战争经验的人类，没有意识到两个颠覆性的侵略者正在到来...
 
-### License Compliance Statement
-According to the GPLv3 requirements:
-- The source code of this mod is open source.
-- Users are free to use, modify, and distribute the code.
-- Any derivative works based on this mod must be open-sourced under the same license.
-- Original copyright notices and license documentation must be retained.
+公元3020年4月8日，波多黎各气象观测站发现了大地中出现超自然的裂缝
+这些发着蓝光的龟裂竟有隐隐若现的眼睛正在盯着被观察的人类。
 
-### Important Links
-- [OpenHV Original Repository](https://github.com/OpenHV/OpenHV)
-- [This Mod's GPLv3 License File](https://github.com/lucas20108083/ACMOD/blob/main/LICENSE)
+与此同时，某国的卫星探测到一块不同寻常的"陨铁"从80光年外的坐标向太阳系突进而来。
+有人尝试去波多黎各探查那巨大的发光龟裂，却再也没有回来。
 
-### Additional Notes
-Original content within the mod not derived from OpenHV is copyright of their respective creators. Using this mod indicates that you have read and agree to comply with all terms of the GPLv3 license.
+在一百年的历史间，人类渐渐忘却这奇怪裂隙与怪异的陨石，把它们当成一个玩笑。
+直到毁灭之日。来自虚空的恶魔撕开了虚空裂隙，那比月球还庞大之外星巨舰降临到大气层上方。
+
+全身冒蓝光的怪物，皮肤长满肿瘤的的巨型虫族不约而同的都对着太阳系虎视眈眈。
+祂们互相发起的战争，也极度危害到了人类。
+
+在同时被两群敌军侵略的情况下，各国领导人紧急情况下想起了千年前的战争体系
+用现有的高端科技，紧急成立人类未来远征军（HFEF）立志夺回人类失去的土地
+将这两群外星生物毁灭在人类的财产，地球上。
+
+这场战役，被称为落日。
+
+```
+
+~~我要玩逆转裁判😭😭~~
+
+---
+
+## **许可证与版权声明**
+
+### 1. 整体协议
+本模组（RWAC - 异星灾变）作为一个整体，采用 **GNU General Public License v3.0（GPLv3）** 进行授权。
+- 您可以在本仓库的 [LICENSE](https://github.com/lucas20108083/ACMOD/blob/main/LICENSE) 文件中查看GPLv3协议的完整文本。
+- 根据GPLv3的要求，您有权自由使用、修改、分享本模组。但任何分发行为（包括修改后的版本）都必须：
+    - 保留原始版权声明。
+    - 采用相同的 GPLv3 协议开源。
+    - 明确注明修改情况。
+
+### 2. 开源素材来源与致谢
+本模组包含了来自开源项目 **[OpenHV](https://github.com/OpenHV/OpenHV)** 的素材和音乐。OpenHV 项目的素材可能采用多种 Creative Commons 许可证，包括但不限于 **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0** 等。
+- **您在使用本模组时，也必须同时遵守 OpenHV 素材原有的许可证条款。**
+- 对于 **CC BY（署名）** 类型的素材，您必须按照原项目要求为 OpenHV 项目署名。
+- 对于 **CC BY-SA（署名-相同方式共享）** 类型的素材，任何包含这些素材的衍生作品也必须采用相同或兼容的许可证发布。
+
+### 3. 原创内容
+本模组中由“鱼雷工作室”成员（lucas20108083, yc big等）与非工作室人员(WuroZayeOuo等) 创作的、非来自 OpenHV 的原创内容，同样遵循 **GNU General Public License v3.0** 协议。
+
+### 4. 重要提示
+使用本模组即表示您已阅读并同意遵守 **GPLv3** 协议及所包含的 OpenHV 素材的原始许可证（如 CC BY-SA 4.0 等）的全部条款。
