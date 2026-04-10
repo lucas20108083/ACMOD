@@ -82,7 +82,7 @@ This mod (RWAC - Alien Catastrophe) as a whole is licensed under the **GNU Gener
     - Clearly indicate modifications made.
 
 ### 2. Open Source Materials Sources and Acknowledgments
-This mod includes materials and music from the open-source project **[OpenHV](https://github.com/OpenHV/OpenHV)**. OpenHV project materials may adopt multiple Creative Commons licenses, including but not limited to **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0**, etc.
+This mod includes materials and music from the open-source project **[OpenHV](https://github.com/OpenHV/OpenHV)**. OpenHV project materials adopt multiple Creative Commons licenses, including but not limited to **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0**, etc.
 - **You must also comply with the original license terms of OpenHV materials when using this mod.**
 - For materials of the **CC BY (Attribution)** type, you must attribute the OpenHV project as required by the original project.
 - For materials of the **CC BY-SA (Attribution-ShareAlike)** type, any derivative works containing these materials must also be released under the same or compatible license.

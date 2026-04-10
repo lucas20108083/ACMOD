@@ -82,7 +82,7 @@
     - 明确注明修改情况。
 
 ### 2. 开源素材来源与致谢
-本模组包含了来自开源项目 **[OpenHV](https://github.com/OpenHV/OpenHV)** 的素材和音乐。OpenHV 项目的素材可能采用多种 Creative Commons 许可证，包括但不限于 **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0** 等。
+本模组包含了来自开源项目 **[OpenHV](https://github.com/OpenHV/OpenHV)** 的素材和音乐。OpenHV 项目的素材采用多种 Creative Commons 许可证，包括但不限于 **CC BY 3.0 US, CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC0** 等。
 - **您在使用本模组时，也必须同时遵守 OpenHV 素材原有的许可证条款。**
 - 对于 **CC BY（署名）** 类型的素材，您必须按照原项目要求为 OpenHV 项目署名。
 - 对于 **CC BY-SA（署名-相同方式共享）** 类型的素材，任何包含这些素材的衍生作品也必须采用相同或兼容的许可证发布。
