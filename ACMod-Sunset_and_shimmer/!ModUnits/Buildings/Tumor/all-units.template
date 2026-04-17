@@ -14,7 +14,7 @@ life:10
 areaDamage:20
 
 [placementRule_扩张]
-anyRuleInGroup: Annex
+anyRuleInGroup: kuozhang
 searchTags:肿瘤建筑
 searchDistance:230
 #searchOffsetX:-80

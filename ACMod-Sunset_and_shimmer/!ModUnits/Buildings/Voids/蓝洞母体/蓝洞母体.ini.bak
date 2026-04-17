@@ -1,0 +1,127 @@
+[core]
+
+
+
+name: 虚无蓝洞母体
+displayText:bluevoid Brooder
+displayText_zh:蓝洞母体
+displayDescription:-Spawn basic units from internal organs\n-Push enemies away with gravity waves\n-Revive once at Bluevoid Nexus below
+displayDescription_zh:-利用体内器官生产基本单位\n-使用引力波将敌人推出领地\n-可通过下方虚空裂隙复活一次
+fogOfWarSightRange:20
+maxHp: 4500
+mass: 4889
+price: 6000,VE=1000
+buildSpeed: 10s
+radius: 40
+selfRegenRate: 0.025
+exit_x: 0
+isPickableStartingUnit:true
+exit_y: 0
+isBuilding: true
+generation_credits: 30
+generation_delay: 60
+generation_resources: VE=30
+tags: RandD
+footprint: -2,-2,2,2
+constructionFootprint: -2,-2,2,3
+[hiddenAction_苏]
+setHeight: -150
+autoTriggerOnEvent: created
+[hiddenAction_爆!]
+autoTriggerOnEvent:destroyed
+addResources:BaseUnitDeadCount:-2
+[hiddenAction_偏移]
+spawnEffects:CUSTOM:移动,move2
+autoTrigger:true
+[ai]
+buildPriority: 16484545
+noneInBaseExtraPriority: 1464894
+noneGlobalExtraPriority: 246464949
+maxEachBase: 2
+maxGlobal: 2
+[effect_移动]
+image:母体.png
+life:135
+atmospheric:true
+scaleFrom:1.12
+scaleTo:1.15
+fadeOut:true
+fadeInTime:70
+alpha:0
+priority:veryhigh
+color:#777799
+attachedToUnit:true
+[effect_move2]
+@copyFromSection:effect_移动
+scaleFrom:1.58
+scaleTo:2
+color:#FFFFFF
+alpha:0
+[graphics]
+image: 母体.png
+drawLayer: top
+image_shadow: NONE
+rotate_with_direction:false
+scaleImagesTo: 245
+image_wreak:none
+animation_idle_start: 0
+movementEffect:CUSTOM:移动
+animation_idle_end: 0
+animation_idle_speed: 150
+animation_idle_scale_start:1
+animation_idle_scale_end:1.05
+animation_idle_pingPong: true
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: true
+turretSize: 28
+turretTurnSpeed: 6
+maxAttackRange: 200
+shootDelay: 15
+#[placementRule_znfz2]
+#anyRuleInGroup:true
+#searchTeam:own
+#maxCount:2
+[movement]
+movementType: AIR
+targetHeight: 90
+targetHeightDrift: 20
+slowDeathFall: true
+[canBuild_00]
+name:setRally
+pos:-1
+[canBuild_1]
+name:虚无构建虫,虚无探照虫,虚无光炮虫
+pos:1
+[turret_1]
+x: -2
+y: 92
+recoilOffset: -0.3
+recoilOutTime: 3
+recoilReturnTime: 8
+#image: location.png
+[projectile_1]
+areaDamage: 100
+pushForce:12
+areaRadius:400
+pushVelocity:20
+directDamage: 0
+sweepSpeed:1.5
+life: ${60*3}
+targetSpeedAcceleration:20
+instant:false
+areaHitAirAndLandAtSameTime:true
+areaHitUnderwaterAlways:true
+areaExpandTime:290
+flameWeapon:true
+initialUnguidedSpeedHeight:-2
+laserEffect:true
+lightColor:#ffff00
+color:#500000ff
+lightSize:0.02
+[hiddenAction_spawn]
+autoTriggerOnEvent: created
+spawnUnits: 虚空裂隙
+requireConditional:if not numberOfUnitsInTeam(withTag='nexus',greaterThan=0,withinRange=60)

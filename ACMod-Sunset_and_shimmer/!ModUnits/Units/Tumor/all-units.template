@@ -21,6 +21,11 @@ onlyWhenSelectedByAnyPlayer:true
 teamColors:true
 alwayStartDirAtZero:true
 alpha:0.25
+[global_resource_BaseUnitDeadCount]
+hidden: true
+displayName: 
+displayNameShort: 亖了
+displayColor: #000000
 [effect_s2]
 image: ROOT:EffectImages/PoisonousFog.png
 life: 75
@@ -41,7 +46,7 @@ image: ROOT:EffectImages/PoisonousFog.png
 life: 5
 drawType:displacement
 fadeOut: true
-attachedToUnit: false
+attachedToUnit: true
 color: #FFFFFF
 fadeInTime:2
 scaleFrom: 1.3
@@ -54,16 +59,16 @@ atmospheric: true
 image: ROOT:EffectImages/Spore.png
 priority: low
 life:30
-lifeRandom:20
-scaleFrom:0.8
-scaleTo:0.1
-alpha:0.8
 xOffsetRelativeRandom: 30
 yOffsetRelativeRandom: 30
-delayedStartTimer:5
+alpha:0.7
+delayedStartTimer:6
+lifeRandom:18
 delayedStartTimerRandom:10
-hSpeed: 0.7
-hSpeedRandom: 0.4
+scaleFrom:0.9
+scaleTo:0.12
+hSpeed: 0.63
+hSpeedRandom: 0.42
 [effect_build191]
 image: ROOT:EffectImages/Deconstruction.png
 priority: low

@@ -1,0 +1,116 @@
+#单位移动音效太逆天了，等我弄好音效再改
+[effect_s1]
+image: ROOT:EffectImages/PoisonousFog.png
+life: 20
+fadeOut: true
+attachedToUnit: true
+fadeInTime: 1.3
+priority:high
+scaleFrom: 0.1
+color: #70002F
+scaleTo: 0.6
+alpha: 0.62
+drawUnderUnits: true
+ySpeedRelative: 3
+#drawType:displacement
+[decal_选中]
+layer:shadow
+image:ROOT:EffectImages/TumorSelected.png
+imageScale:${core.radius}*0.0651
+onlyWhenSelectedByAnyPlayer:true
+teamColors:true
+alwayStartDirAtZero:true
+alpha:0.25
+[global_resource_BaseUnitDeadCount]
+hidden: true
+displayName: 
+displayNameShort: 亖了
+displayColor: #000000
+[effect_s2]
+image: ROOT:EffectImages/PoisonousFog.png
+life: 75
+fadeOut: true
+attachedToUnit: true
+color: #FF3333
+fadeInTime: 4
+scaleFrom: 0.3
+scaleTo: 1.5
+ySpeedRelative: 4
+priority:high
+[effect_build114]
+createWhenZoomedOut: false
+priority:low
+xOffsetRelativeRandom: 10
+yOffsetRelativeRandom: 16
+image: ROOT:EffectImages/PoisonousFog.png
+life: 5
+drawType:displacement
+fadeOut: true
+attachedToUnit: true
+color: #FFFFFF
+fadeInTime:2
+scaleFrom: 1.3
+scaleTo: 0.25
+alpha: 2
+drawUnderUnits:true
+ySpeedRelative:5
+atmospheric: true
+[effect_build514]
+image: ROOT:EffectImages/Spore.png
+priority: low
+life:30
+xOffsetRelativeRandom: 30
+yOffsetRelativeRandom: 30
+scaleFrom:0.8
+scaleTo:0.12
+alpha:0.8
+delayedStartTimer:5
+lifeRandom:18
+delayedStartTimerRandom:10
+hSpeed: 0.63
+hSpeedRandom: 0.42
+[effect_build191]
+image: ROOT:EffectImages/Deconstruction.png
+priority: low
+life:30
+lifeRandom:20
+scaleFrom:1
+scaleTo:0.25
+alpha:0.8
+xOffsetRelativeRandom: 30
+yOffsetRelativeRandom: -60
+drawType:displacement
+delayedStartTimer:5
+delayedStartTimerRandom:10
+hSpeed: 0.7
+hSpeedRandom: 0.4
+[graphics]
+image_shadow:AUTO
+shadowOffsetX:3
+shadowOffsetY:3
+repairEffectAtTarget:CUSTOM:build114*1,build514*2,s1*2
+repairEffectRate: 1
+repairEffect:CUSTOM:build514,s1*2,s2
+reclaimEffectRate:2
+reclaimEffectAtTarget:CUSTOM:build114,build191,s1*2
+reclaimEffect:CUSTOM:build514,s1*2,s2
+
+[core]
+@memory damage:float
+defineUnitMemory: float damage
+tags:无视孢子
+copyFrom:ROOT:all-units.template,ROOT:Templates\InfantryBlood.template
+
+[hiddenAction_死亡播放]
+autoTriggerOnEvent:destroyed
+playSoundAtUnit:ROOT:/SFX/Tumor/虫族死亡.wav
+[global_resource_无线电]
+hidden: true
+
+
+
+[global_resource_safeMode]
+hidden:true
+
+[graphics]
+total_frames:1

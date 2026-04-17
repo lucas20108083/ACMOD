@@ -1,0 +1,80 @@
+[core]
+@memory location:unit
+
+
+name:赤肉魔蝗(陆地)
+copyFrom:赤肉魔蝗.ini
+energyRegen:-0.02
+showInEditor:false
+displayText:赤肉魔蝗
+isBio:true
+[movement]
+targetHeight:0
+moveSpeed:1.2
+moveAccelerationSpeed:17
+maxTurnSpeed:3
+moveIgnoringBody:false
+[hiddenAction_20240826195508]
+autoTrigger:if self.energy(lessThan=1)
+addResources:hp=-17
+[action_suffocation]
+text_zh:氧气不足！
+text:unit is suffocating
+description:Unit oxygen has run out\nneed to go back to the water to breathe\nor you'll be in a suffocated state
+description_zh:你需要回到水中补充氧气\n否则此单位将持续扣血
+isVisible:if self.energy(lessThan=1)
+isActive:false
+displayType:infoOnly
+addResources:1
+[hiddenAction_1]
+autoTrigger:if self.isOverPassableTile(type='water')
+convertTo:赤肉魔蝗（在水中）
+
+
+[action_检查]
+text:查找附近的物块
+isVisible:false
+description:2
+requireConditional:if self.energy <= 25 and self.energy > 23
+autoTrigger:if self.energy(lessThan=25) and self.isControlledByAI()
+temporarilyRemoveTags:founded
+alsoTriggerAction:pp
+alsoTriggerActionRepeat:128
+buildSpeed:0.1s
+
+
+[hiddenAction_pp]
+isVisible:false
+requireConditional:if getOffsetRelative(y=index*4,dirOffset=index*43).isOverPassableTile(type="WATER") and not self.tags(includes='founded')
+setUnitMemory:location=getOffsetRelative(y=index*4,dirOffset=index*43)
+temporarilyAddTags:founded
+alsoQueueAction:放置定位器
+[hiddenAction_添加路径点]
+clearActiveWaypoint:true
+addWaypoint_type:attackMove
+addWaypoint_target_nearestUnit_tagged:水蛭定位器
+addWaypoint_target_nearestUnit_team:own
+addWaypoint_target_mapMustBeReachable:true
+
+
+[action_放置定位器]
+isVisible:false
+text:验证位置
+description:在内存处生成定位器
+buildSpeed:0
+fireTurretXAtGround:SpawnUnit
+alsoQueueAction:添加路径点
+fireTurretXAtGround_withTarget:memory.location
+
+[turret_SpawnUnit]
+x:0
+y:0
+canShoot:false
+limitingRange:67667
+invisible:true
+projectile:SpawnUnit
+[projectile_SpawnUnit]
+life:10
+instant:true
+directDamage:0
+spawnUnit:水蛭AI定位器

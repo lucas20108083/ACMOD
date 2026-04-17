@@ -1,0 +1,110 @@
+[core]
+name:混乱蝾螈怪
+
+displayText:Chaos Salamander
+displayText_zh:混乱蝾螈怪
+
+displayDescription:-Able to fire Chaos cones at high fire rates to attack enemies\n-Only attack land units\n"Infested by Chaos"
+displayDescription_zh:-能以高射速发射混沌尖锥攻击敌人\n-仅攻击陆地单位\n"被混沌浸染"
+
+maxHp:1700
+maxShield:1200
+shieldRegen:19
+mass:3000
+price:2100,VE:740
+radius:30
+buildSpeed:15s
+energyMax: 45
+energyRegen: 0
+
+[hiddenAction_Reload]
+autoTrigger: if self.energy() == 0 and self.queueSize() == 0
+alsoQueueAction: ReloadAction
+[action_ReloadAction]
+text: Reload Ammo
+text_zh: 充能
+description: Being charged
+description_zh: 正在充能
+
+displayType: infoOnly
+isGuiBlinking: true
+buildSpeed: 5s
+addResources: energy=45
+isVisible: if self.energy() < 2
+highPriorityQueue: true
+allowMultipleInQueue: false
+canPlayerCancel: false
+
+[graphics]
+image:ChaosSalamander.png
+image_wreak:base_dead.png
+scaleImagesTo:73
+image_shadow:AUTO
+shadowOffsetX:2
+shadowOffsetY:2
+
+[attack]
+canAttack:true
+canAttackFlyingUnits:false
+canAttackLandUnits:true
+canAttackUnderwaterUnits:false
+
+[movement]
+movementType:OVER_CLIFF
+moveSpeed:1.22
+maxTurnSpeed:1.56
+
+[turret_泡]
+x:0
+y:12
+image:炮塔.png
+idleDir:10
+resourceUsage: energy:1
+
+[leg_1]
+x: -28
+y: 32
+heightSpeed:0.35
+moveSpeed: 4
+rotateSpeed: 2
+resetAngle: 75
+image_leg:  bydleg.png
+image_foot: foot.png
+#draw_foot_on_top: true
+#dust_effect: false
+
+[leg_2]
+x: 28
+y: 32
+copyFrom: 1
+
+[leg_3]
+x: -28
+y: 6
+#x: -30
+#y: -18
+copyFrom: 1
+resetAngle: -45
+
+[leg_4]
+x: 28
+y: -6
+#x: 30
+#y: -18
+copyFrom: 1
+resetAngle: -45
+
+[effect_尖锥击中]
+life:50
+image:conehit.png
+priority:critical
+total_frames:5
+alsoPlaySound:chaosconehit.ogg
+animateFrameStart:0
+animateFrameEnd:4
+dirOffsetRandom:20
+fadeOut:true
+scaleFrom:0.8
+scaleTo:0.9
+alpha:0.8
+animateFrameSpeed:0.3

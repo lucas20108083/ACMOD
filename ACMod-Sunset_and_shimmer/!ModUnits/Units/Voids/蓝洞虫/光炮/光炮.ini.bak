@@ -1,0 +1,60 @@
+[core]
+
+
+
+name:虚无光炮虫
+displayText_zh:光炮飞蜂
+#疑似突眼蝇
+displayText:Lightbomb shooter
+copyFrom: 模板.ini
+displayDescription:-Use the antennae to toss lightbombs to delay the enemy\n-Defensive use only\n-avoid direct engagement\n-Lightbombs hitting the enemy can briefly illuminate the fog of war\n-Attacks air and ground targets
+displayDescription_zh:-用触角抛掷爆炸光弹阻击敌人\n-仅适用于初期防御 不适合直接进攻\n-光弹击中敌人可短暂照亮战争迷雾\n-对空对地
+maxHp:800
+techLevel:1
+transportSlotsNeeded:1
+[ai]
+useAsAttacker:true
+[graphics]
+image:lightbombee.png
+total_frames:4
+teamColoringMode:disabled
+[animation_idle]
+start:0
+end:0
+speed:3
+pingPong:false
+onActions:idle
+
+[animation_attacking]
+start:1
+end:3
+speed:4
+pingPong:false
+onActions:attack
+[effect_波]
+priority:critical
+image:effect.png
+life: 60
+alsoPlaySound:bombhit.ogg
+color:#EE56D0EF
+scaleFrom: 0.25
+scaleTo: 1.25
+[turret_1]
+x:0
+y:0
+image:SHARED:blank.png
+shoot_flame:none
+[projectile_1]
+areaRadius:40
+#2
+areaHitAirAndLandAtSameTime:true
+areaDamage:60
+image:光炮.png
+trailEffect:true
+spawnUnit:ShowFog2Block
+flameWeapon:true
+largeHitEffect:false
+explodeEffectOnShield:波
+explodeEffect:波
+speed:6
+life:300

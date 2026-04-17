@@ -1,0 +1,222 @@
+
+#RF
+[resource_randomPoint]
+hidden:true
+[action_随机阵营]
+text:Random Faction
+description:Randomly select a faction based on probability
+text_zh:随机阵营
+description_zh:根据概率随机选择一个阵营
+ai_isDisabled: true
+iconImage:4.png
+isLocked:if self.timeAlive(laterThanSeconds=30) and not self.isControlledByAI
+buildSpeed:0s
+displayType:action
+highPriorityQueue:true
+iconExtraImage: base.png
+isLockedMessage:[选择时间已结束]\n[select time up]
+isVisible:if not self.isControlledByAI
+setResourcesWithLogic: randomPoint:1
+#showMessageToPlayer: DEBUG: Added Resource!
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+
+[hiddenAction_随机HFEF]
+autoTrigger:if int(rnd(1, 90)) >= 1 and int(rnd(1, 90)) <= 30 and self.resource('randomPoint') >= 1
+#showMessageToPlayer: DEBUG: Removed Resources! HFEF!
+temporarilyAddTags: hfef
+temporarilyRemoveTags: tumor,void
+addResources: randomPoint:-1
+
+[hiddenAction_随机Tumor]
+autoTrigger:if int(rnd(1, 90)) >= 31 and int(rnd(1, 90)) <= 60 and self.resource('randomPoint') >= 1
+#showMessageToPlayer: DEBUG: Removed Resources! Tumor!
+temporarilyAddTags: tumor
+temporarilyRemoveTags: hfef,void
+addResources: randomPoint:-1
+
+[hiddenAction_随机Void]
+autoTrigger:if int(rnd(1, 90)) >= 61 and int(rnd(1, 90)) <= 90 and self.resource('randomPoint') >= 1
+#showMessageToPlayer: DEBUG: Removed Resources! Void!
+temporarilyAddTags: void
+temporarilyRemoveTags: hfef,tumor
+addResources: randomPoint:-1
+
+#HFEF
+[action_预选HFEF]
+text:Human Future Expeditionary Force
+description:A thousand years of peace was shattered by a double invasion. With the temporary gathering of heritage technology, precision technology, and reliance on collaborative survival. \n"We want to live"
+
+text_zh:人类未来远征军
+description_zh:千年和平碎裂于双重入侵。以遗产科技临时集结，精密科技，依赖协同求生\n"我们想活下去"
+
+isLocked:if self.isControlledByAI or self.tags(includes='hfef')
+isLockedMessage: [已选择该阵营]\n[Selected]
+isGuiBlinking: if self.tags(includes='hfef')
+ai_isHighPriority:if self.timeAlive(laterThanSeconds=29)
+temporarilyRemoveTags:tumor,void
+temporarilyAddTags:hfef
+iconImage:1.png
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:action
+highPriorityQueue: true
+extraLagHidingInUI: true
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=30)
+
+[action_结果HFEF]
+text: Human Future Expeditionary Force
+description:A thousand years of peace was shattered by a double invasion. With the temporary gathering of heritage technology, precision technology, and reliance on collaborative survival. \n"We want to live"
+text_zh:人类未来远征军
+description_zh:千年和平碎裂于双重入侵。以遗产科技临时集结，精密科技，依赖协同求生\n"我们想活下去"
+iconImage:1.png
+isGuiBlinking: if self.tags(includes='hfef')
+isLocked:true
+isLockedMessage: [选择时间已结束]\n[select time up]
+displayType:action
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=30) and not self.isControlledByAI
+
+[hiddenAction_处理HFEF]
+autoTrigger:if self.tags(includes='hfef') and self.timeAlive(laterThanSeconds=31) and not self.hasFlag(id=1)
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:HFEFSpawner
+spawnEffects:选择效果1,G2,Spark*25,portal
+addResources:credits:1200,MAC:600,RD:600,MRF:600,setFlag=1
+
+#Tumor
+
+[action_预选Tumor]
+text: Bloodthirsty Sandstorm
+description:The empire wanders between destruction and greed, \naberration dances with steel, expands endlessly, \nand chases the addiction of core "The mutated insect is releasing endless screams."
+
+text_zh:嗜血沙尘暴
+description_zh:流浪于毁灭与贪婪之间的帝国，畸变与钢铁共舞，扩张无休，永逐地核之毒\n"瘤变之虫释放着无尽的尖啸"
+
+isLocked:if self.isControlledByAI or self.tags(includes='tumor')
+isLockedMessage: [已选择该阵营]\n[Selected]
+isGuiBlinking: if self.tags(includes='tumor')
+ai_isHighPriority:if self.timeAlive(laterThanSeconds=29)
+temporarilyRemoveTags:hfef,void
+temporarilyAddTags:tumor
+iconImage:3.png
+
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:action
+highPriorityQueue: true
+extraLagHidingInUI: true
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=30)
+
+[action_结果Tumor]
+text: Bloodthirsty Sandstorm
+description:The empire wanders between destruction and greed, \naberration dances with steel, expands endlessly, \nand chases the addiction of core "The mutated insect is releasing endless screams."
+
+
+text_zh:嗜血沙尘暴
+description_zh:流浪于毁灭与贪婪之间的帝国，畸变与钢铁共舞，扩张无休，永逐地核之毒\n"瘤变之虫释放着无尽的尖啸"
+
+iconImage:3.png
+isGuiBlinking: if self.tags(includes='tumor') 
+isLocked:true
+isLockedMessage: [选择时间已结束]\n[select time up]
+displayType:action
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=30) and not self.isControlledByAI
+
+[hiddenAction_处理Tumor]
+autoTrigger:if self.tags(includes='tumor') and self.timeAlive(laterThanSeconds=31) and not self.hasFlag(id=1) 
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:TumorSpawner,bbflare(offsetX=80),bbflare(offsetX=-80),bbflare(offsetY=80),bbflare(offsetY=-80)
+spawnEffects:选择效果2,G1,Spark*25,redw
+addResources:credits:1000,DNA:1000,setFlag=1
+
+#Void
+
+[action_预选Void]
+text: Phantom Dynasty
+description:The shepherd, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
+
+text_zh:空虚王朝
+description_zh:牧羊人以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
+
+isLocked:if self.isControlledByAI or self.tags(includes='void')
+isLockedMessage: [已选择该阵营]\n[Selected]
+isGuiBlinking: if self.tags(includes='void')
+ai_isHighPriority:false
+temporarilyRemoveTags:hfef,tumor
+temporarilyAddTags:void
+iconImage:2.png
+
+playAnimation:move
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+displayType:action
+highPriorityQueue: true
+extraLagHidingInUI: true
+
+#isVisible:if not self.hasFlag(id=1) and not self.hasFlag(id=2) and not self.hasFlag(id=3)
+isVisible:if not self.timeAlive(laterThanSeconds=30)
+
+[action_结果Void]
+text: Phantom Dynasty
+description:The shepherd, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
+
+text_zh:空虚王朝
+description_zh:牧羊人以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
+
+iconImage:2.png
+isGuiBlinking: if self.tags(includes='void')
+isLocked:true
+isLockedMessage: [选择时间已结束]\n[select time up]
+displayType:action
+buildSpeed:0s
+#isVisible:if self.hasFlag(id=1)
+isVisible:if self.timeAlive(laterThanSeconds=30) and not self.isControlledByAI
+
+[hiddenAction_处理Void]
+autoTrigger:if self.tags(includes='void') and self.timeAlive(laterThanSeconds=31) and not self.hasFlag(id=1) 
+
+playAnimation:move
+buildSpeed:0s
+highPriorityQueue: true
+
+spawnUnits:VoidSpawner,eflare(offsetX=80),eflare(offsetX=-80),eflare(offsetY=80),eflare(offsetY=-80)
+spawnEffects:选择效果3,G2,Spark*25,redw
+addResources:credits:1000,VE:1300,setFlag=1
+
+
+[hiddenAction_Ai处理HFEF]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 1 and rnd(1, 9) <= 3 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: hfef
+temporarilyRemoveTags: tumor,void
+[hiddenAction_Ai处理Tumor]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 3 and rnd(1, 9) <= 6 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: tumor
+temporarilyRemoveTags: hfef,void
+[hiddenAction_Ai处理Void]
+autoTrigger:if self.isControlledByAI() and rnd(1, 9) >= 6 and rnd(1, 9) <= 9 and not self.hasFlag(id=1) and self.timeAlive() > 5
+temporarilyAddTags: void
+temporarilyRemoveTags: hfef,tumor
+
+

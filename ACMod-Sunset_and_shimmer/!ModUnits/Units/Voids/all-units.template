@@ -17,21 +17,9 @@ animateFrameSpeed:0.2
 animateFrameEnd:13
 animateFrameStart:0
 image:ROOT:EffectImages/fire.png
-[effect_爆2]
-priority:veryhigh
-total_frames:1
-life: 114
-fadeOut:true
-attachedToUnit: false
-color: #FFFFFF
-scaleFrom:0.5
-scaleTo:1
-image:base_dead.png
-alpha: 1
-drawUnderUnits:false
 [hiddenAction_爆]
 autoTriggerOnEvent:destroyed
-spawnEffects:爆1,爆2,Blood*50,Blood2*35,Blood3*38
+spawnEffects:爆1,Blood*50,Blood2*35,Blood3*38
 [effect_Blood]
 life: 200
 scaleFrom:${core.radius/100}
@@ -48,7 +36,7 @@ scaleTo:${core.radius/100}
 [action_细胞分裂]
 text: 分型复制
 allowMultipleInQueue:true
-ai_isHighPriority: if self.hp < ${core.maxHp} / 2
+ai_isHighPriority: if self.hp < ${core.maxHp} / 2 and self.resource(type='VE',greaterThan=7000)
 addActionCooldownTime:50s
 buildSpeed: 20s
 description: -虚空生物能够融合自身所拥有的空能\n-将自身的分子结构从原子状态下分成两半\n-并复原另一部分的细胞结构
@@ -63,8 +51,8 @@ iconExtraImage:ROOT:Icons/Actions/Clone.png
 
 
 [graphics]
-image_wreak:none
-
+image_wreak:base_dead.png
+teamColoringMode:disabled
 
 [decal_选中]
 layer:shadow
