@@ -1,6 +1,6 @@
 
 [mod]
-title:RWAC异星灾变 Version1.4.7
+title:RWAC异星灾变 Version1.4.8
 description:感谢游玩acmod 制作者:lucas20108083 WuroZayeOuo 洋葱yc big
 minVersion:1.15p11
 thumbnail:mod-icon.png
