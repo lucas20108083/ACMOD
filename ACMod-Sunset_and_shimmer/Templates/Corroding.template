@@ -40,9 +40,8 @@ hidden:true
 [decal_CorrodingBar_Under]
 order:-1
 layer:onTop
-image:SHADOW:SHARED:pixel.png
+image:SHADOW:ROOT:EffectImages/pixel.png
 imageScale:2
-color:#252525
 imageScaleX:(self.resource.zxx / 5) * 15.2
 alwayStartDirAtZero:true
 onlyWhileAlive:true
@@ -54,9 +53,9 @@ imageScaleY:1.2
 
 [decal_CorrodingBar]
 layer:onTop
-image:SHARED:pixel.png
+image:ROOT:EffectImages/pixel.png
 imageScale:2
-color:#c46b09
+color:#A7BE7E
 imageScaleX:(self.resource.zxx / 5) * 15
 alwayStartDirAtZero:true
 onlyWhileAlive:true
