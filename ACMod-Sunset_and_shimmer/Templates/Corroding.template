@@ -8,29 +8,59 @@ description_zh:单位已被腐蚀\n单位腐蚀过后会造成一段时间的持
 
 isLocked:true
 isGuiBlinking:true
-isVisible:if self.resource('zxx') > 0
+isVisible:if self.resource.zxx > 0
 
 #HA
 [hiddenAction_CorrodingDamage]
-@define coc=self.resource('zxx')
-autoTrigger:if self.resource('zxx') > 0
+@define coc=self.resource.zxx
+autoTrigger:if self.resource.zxx > 0
 setUnitStats:shieldRegen=- ${coc},selfRegenRate=- ${coc}
 addResources:zxx=-0.015
 
 [hiddenAction_CorrodingOvered]
-autoTrigger:if self.resource('zxx') == 0
+autoTrigger:if self.resource.zxx == 0
 resetUnitStats:true
 
 [hiddenAction_CorrodingRemoved]
-autoTrigger:if self.resource('zxx') < 0
+autoTrigger:if self.resource.zxx < 0
 resourceAmount_setValue:0
 resourceAmount:zxx
 
 [hiddenAction_CorrodingLimit]
-autoTrigger:if self.resource('zxx') >= 5
+autoTrigger:if self.resource.zxx >= 5
 resourceAmount_setValue:4.99
 resourceAmount:zxx
 
 #R
 [resource_zxx]
 hidden:true
+
+
+#D
+[decal_CorrodingBar_Under]
+order:-1
+layer:onTop
+image:SHADOW:SHARED:pixel.png
+imageScale:2
+color:#252525
+imageScaleX:(self.resource.zxx / 5) * 15.2
+alwayStartDirAtZero:true
+onlyWhileAlive:true
+isVisible:if self.resource.zxx > 0
+onlyOnNonPreview:true
+xOffsetAbsolute:30 - ( (self.resource.zxx / 5) * 5 )
+yOffsetAbsolute:15
+imageScaleY:1.2
+
+[decal_CorrodingBar]
+layer:onTop
+image:SHARED:pixel.png
+imageScale:2
+color:#c46b09
+imageScaleX:(self.resource.zxx / 5) * 15
+alwayStartDirAtZero:true
+onlyWhileAlive:true
+isVisible:if self.resource.zxx > 0
+onlyOnNonPreview:true
+xOffsetAbsolute:30 - ( (self.resource.zxx / 5) * 5 )
+yOffsetAbsolute:15
