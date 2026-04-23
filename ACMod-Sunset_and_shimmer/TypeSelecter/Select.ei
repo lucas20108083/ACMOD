@@ -154,10 +154,10 @@ addResources:credits:1000,DNA:1000,setFlag=1
 
 [action_预选Void]
 text: Phantom Dynasty
-description:The shepherd, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
+description:Calrenos, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
 
 text_zh:空虚王朝
-description_zh:牧羊人以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
+description_zh:牧羊人卡尔瑞诺斯以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
 
 isLocked:if self.isControlledByAI or self.tags(includes='void')
 isLockedMessage: [已选择该阵营]\n[Selected]
@@ -180,10 +180,10 @@ isVisible:if not self.timeAlive(laterThanSeconds=30)
 
 [action_结果Void]
 text: Phantom Dynasty
-description:The shepherd, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
+description:Calrenos, with the will of the beehive, controls the army created by the rift creatures, distorts and assimilates the universe ecology, but the will of the master brain spreads forever... "Bluevoid will eventually change everything."
 
 text_zh:空虚王朝
-description_zh:牧羊人以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
+description_zh:牧羊人卡尔瑞诺斯以蜂巢意志统御裂隙生物造就的大军，扭曲同化宇宙生态，唯主脑意志永恒蔓延\n"虚空裂隙终将改变一切"
 
 iconImage:2.png
 isGuiBlinking: if self.tags(includes='void')

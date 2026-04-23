@@ -41,6 +41,7 @@ class PackageToolGUI:
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
         self.base_path = os.path.join(self.script_dir, self.base_name)
         self.mod_info_path = os.path.join(self.base_path, "mod-info.txt")
+        self.build_output_dir = os.path.join(self.script_dir, "Build")
         self.version_var = tk.StringVar()
         self.build_type_var = tk.StringVar(value="release")
         self.move_to_mods_var = tk.BooleanVar(value=True)
@@ -49,6 +50,8 @@ class PackageToolGUI:
         # 关闭并重启选项：勾选则在构建前关闭游戏并记录 exe 路径，构建完成后尝试重启
         self.close_and_restart_var = tk.BooleanVar(value=False)
         self.killed_rw_exe = None
+        # 跳过Build目录选项
+        self.skip_build_var = tk.BooleanVar(value=True)
         
         self.create_widgets()
         self.auto_detect_version()
@@ -149,6 +152,10 @@ class PackageToolGUI:
         self.build_btn = ttk.Button(bottom_frame, text="开始构建", 
                                   command=self.start_build_thread)
         self.build_btn.grid(row=0, column=1, padx=(10, 0))
+        # 跳过Build目录选项
+        self.skip_build_chk = ttk.Checkbutton(bottom_frame, text="跳过Build目录", 
+                                             variable=self.skip_build_var)
+        self.skip_build_chk.grid(row=1, column=0, sticky=tk.W, pady=(6, 0))
         # 在开始构建按钮下增加关闭进程的 CheckBox（用户勾选后在构建前关闭游戏并在构建后重启）
         self.close_chk = ttk.Checkbutton(bottom_frame, text="关闭进程",
                                          variable=self.close_and_restart_var)
@@ -293,6 +300,31 @@ class PackageToolGUI:
         except Exception as e:
             self.log_message(f"⚠️ 无法保存 ver.txt: {e}")
         
+    def retry_action(self, action, retries=5, delay=0.5, action_name="操作"):
+        """重试操作，避免文件被占用导致偶发失败"""
+        for attempt in range(retries):
+            try:
+                return action()
+            except Exception as e:
+                if attempt == retries - 1:
+                    raise
+                self.log_message(f"⚠️ {action_name} 失败，重试 {attempt+1}/{retries}：{e}")
+                time.sleep(delay)
+
+    def safe_remove(self, path):
+        if not os.path.exists(path):
+            return
+        def action():
+            os.remove(path)
+        self.retry_action(action, action_name=f"删除文件 {path}")
+
+    def safe_rename(self, src, dst):
+        def action():
+            if os.path.exists(dst):
+                os.remove(dst)
+            os.rename(src, dst)
+        self.retry_action(action, action_name=f"重命名 {src} -> {dst}")
+
     def start_build_thread(self):
         """在新线程中开始构建"""
         self.build_btn.configure(state="disabled")
@@ -317,6 +349,7 @@ class PackageToolGUI:
             build_type = self.build_type_var.get()
             move_to_mods = self.move_to_mods_var.get()
             rw_mods_path = self.rw_mods_path_var.get()
+            skip_build = self.skip_build_var.get()
             
             # 显示构建配置
             self.log_message("=" * 50)
@@ -350,9 +383,9 @@ class PackageToolGUI:
                 return
 
             # 创建构建目录
-            if not os.path.exists("Build"):
-                os.makedirs("Build")
-                self.log_message("📁 创建 Build 目录")
+            if not os.path.exists(self.build_output_dir):
+                os.makedirs(self.build_output_dir)
+                self.log_message(f"📁 创建构建目录: {self.build_output_dir}")
                 
             # 准备文件名
             if build_type == "debug":
@@ -361,15 +394,22 @@ class PackageToolGUI:
                 file_name = f"{self.base_name}_{version}"
                 
             # 创建zip文件
-            zip_path = os.path.join("Build", f"{file_name}.zip")
+            zip_path = os.path.join(self.build_output_dir, f"{file_name}.zip")
+            zip_temp_path = zip_path + ".tmp"
             try:
                 self.log_message(f"\n📦 正在打包 {self.base_name}...")
                 file_count = 0
+                if os.path.exists(zip_temp_path):
+                    self.safe_remove(zip_temp_path)
                 
-                with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                with zipfile.ZipFile(zip_temp_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
                     # 使用基于脚本目录的源文件夹路径，避免相对路径问题
                     source_dir = os.path.abspath(self.base_path)
                     for root, _, files in os.walk(source_dir):
+                        if skip_build:
+                            rel_root = os.path.relpath(root, source_dir)
+                            if rel_root == 'Build' or rel_root.startswith('Build' + os.path.sep):
+                                continue  # 只跳过源目录下的 Build 文件夹
                         for file in files:
                             file_path = os.path.join(root, file)
                             arcname = os.path.join(
@@ -378,18 +418,24 @@ class PackageToolGUI:
                             ).replace(os.path.sep, '/')
                             if arcname.startswith('./'):
                                 arcname = arcname[2:]
-                            zipf.write(file_path, arcname)
-                            file_count += 1
-                            if file_count % 10 == 0:  # 每10个文件更新一次日志
-                                self.log_message(f"   已添加 {file_count} 个文件...")
+                            try:
+                                self.log_message(f"正在添加文件: {arcname}")
+                                zipf.write(file_path, arcname)
+                                file_count += 1
+                                if file_count % 10 == 0:  # 每10个文件更新一次日志
+                                    self.log_message(f"   已添加 {file_count} 个文件...")
+                            except Exception as e:
+                                self.log_message(f"❌ 添加文件失败: {arcname} - {str(e)}")
+                                raise  # 重新抛出异常以停止构建
                             
                 self.log_message(f"✅ 总共添加了 {file_count} 个文件")
+                self.safe_rename(zip_temp_path, zip_path)
                 
                 # 重命名为.rwmod
-                rwmod_path = os.path.join("Build", f"{file_name}.rwmod")
+                rwmod_path = os.path.join(self.build_output_dir, f"{file_name}.rwmod")
                 if os.path.exists(rwmod_path):
-                    os.remove(rwmod_path)
-                os.rename(zip_path, rwmod_path)
+                    self.safe_remove(rwmod_path)
+                self.safe_rename(zip_path, rwmod_path)
                 self.log_message(f"🎯 Mod包已创建: {rwmod_path}")
                 
                 # 如果选择快速移动
@@ -399,8 +445,15 @@ class PackageToolGUI:
                     if os.path.exists(target_path):
                         self.log_message("⚠️  检测到已存在同名Mod文件")
                         self.kill_rw_process()
-                        os.remove(target_path)
-                        self.log_message(f"🗑️  已删除旧版Mod: {target_path}")
+                        try:
+                            self.safe_remove(target_path)
+                            self.log_message(f"🗑️  已删除旧版Mod: {target_path}")
+                        except Exception as e:
+                            self.log_message(f"❌ 无法删除旧版Mod（可能被占用）: {e}")
+                            self.log_message("⚠️ 请确保目标文件未被其他程序占用后重试")
+                            self.progress_var.set("构建失败")
+                            self.build_btn.configure(state="normal")
+                            return
                         
                     shutil.copy2(rwmod_path, rw_mods_path)
                     self.log_message(f"🚀 Mod已复制到铁锈战争Mod文件夹: {target_path}")
